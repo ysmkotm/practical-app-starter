@@ -91,6 +91,7 @@
 - EMP002 POST：Validation Groups 採用等は [`emp002_post_validation_groups.md`](../07_decisions/emp002_post_validation_groups.md)。削除済みマスタの現在値維持は [`emp002_soft_deleted_master_reference.md`](../07_decisions/emp002_soft_deleted_master_reference.md)。
 - F-01 の `PSQLException` 依存は EMP002 最小実装として当面維持。将来の責務見直しは [`BLG-CMN-017`](backlog.md)（Version 1.x 以降）。
 - 2026/07/23：作業管理を PRG 中心に再編。REV-ID・レビュー専用章を廃止（[`progress_prg_centric_work_management.md`](../07_decisions/progress_prg_centric_work_management.md)）。
+- **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。実装はCursor（[`ai.md`](../02_rules/ai.md) §2 の役割分担どおり）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`。
 
 ---
 
@@ -102,7 +103,9 @@
 
 #### 共通（CMN）
 
-（未完了なし）
+|ID|スコープ|優先度|作業内容|状態|関連|
+|---|---|---|---|---|---|
+|PRG-CMN-004|DBマイグレーション基盤|高（優先度引き上げ）|Flyway導入（依存追加・既存SQLのFlyway化・設定・setup.md更新）|未着手|Version 1.x技術対応（[`project.md`](project.md) §4）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`（実装はCursor、[`ai.md`](../02_rules/ai.md) §2）|
 
 #### 社員管理（EMP）
 

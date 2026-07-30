@@ -1,6 +1,6 @@
 # プロジェクト概要
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
 **更新日** : 2026/07/30
 
@@ -87,8 +87,8 @@ Version 1.0 公開後の増分です。公開ブロッカーにはしません�
 
 #### 技術対応
 
-- Spring Security
 - Flyway
+- Spring Security
 - Docker
 - Spring Boot 4.x 対応（必要になった時点）
 
