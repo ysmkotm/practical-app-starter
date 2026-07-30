@@ -1,6 +1,6 @@
 # 進捗管理
 
-**Document Version** : 1.1
+**Document Version** : 1.2
 
 **更新日** : 2026/07/30
 
@@ -63,19 +63,19 @@
 |項目|内容|
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）|
-|現在のフォーカス|Version 1.0 **必須**残作業。**PRG-PRJ-002（新 Public 作成・正本切替）→ PRG-PRJ-003（初見ウォークスルー）**。PRG-PRJ-001 は完了|
-|直近の完了|PRG-PRJ-001（公開向け整理・Document Version 初版揃え）（2026/07/30）|
-|次のタスク|1. PRG-PRJ-002 残り（新 Public 作成・公開対象コピー・正本切替） 2. PRG-PRJ-003（初見ウォークスルー）|
+|現在のフォーカス|Version 1.0 **必須**残作業。**PRG-PRJ-003（初見ウォークスルー）**。PRG-PRJ-001・002 は完了|
+|直近の完了|PRG-PRJ-002（新 Public 作成・正本切替）（2026/07/30）|
+|次のタスク|1. PRG-PRJ-003（GitHub 初見視点の公開品質ウォークスルー）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ §7 / Version 2 以降|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
 |最終更新|2026/07/30|
 
 ### 作業メモ
 
-- プロジェクト名：説明路線で確定（Practical App Starter — Spring Boot Edition）。パッケージ／Maven は [`java_package_and_maven_coordinates.md`](../07_decisions/java_package_and_maven_coordinates.md)（`io.github.ysmkotm.practicalappstarter` / `practical-app-starter`）。名称は [`project_name_candidates.md`](../07_decisions/project_name_candidates.md)、BLG-PRJ-001 完了。**座標・起動クラス・README／LICENSE／setup への反映は 2026/07/25 完了**。新 Public 作成は PRG-PRJ-002 残り。
-- 公開・提供方針：再検討を経て **再確定（BLG-PRJ-008 完了）**。配置は **`prompts/`（公開代表）と `private/`（開発正本）の分離**（[`public_private_repo_topology.md`](../07_decisions/public_private_repo_topology.md)、[`public_prompts_at_repo_root.md`](../07_decisions/public_prompts_at_repo_root.md)）。物理分離は実施済み。**初回公開は新規 Public へ公開対象のみコピー**（[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md)）。履歴書き換えは行わない。LICENSE／名称／Maven・パッケージ反映は完了。**新 Public 作成と正本切替は PRG-PRJ-002 残り**。公開後の `private` は Public ローカル＋`.gitignore`。ライセンスは Apache-2.0（BLG-PRJ-007）。棚卸し BLG-PRJ-009、記録ルール BLG-PRJ-010 完了。`knowledge/` 廃止・直下 `prompts/` 化は 2026/07/26 反映。
+- プロジェクト名：説明路線で確定（Practical App Starter — Spring Boot Edition）。パッケージ／Maven は [`java_package_and_maven_coordinates.md`](../07_decisions/java_package_and_maven_coordinates.md)（`io.github.ysmkotm.practicalappstarter` / `practical-app-starter`）。名称は [`project_name_candidates.md`](../07_decisions/project_name_candidates.md)、BLG-PRJ-001 完了。**座標・起動クラス・README／LICENSE／setup への反映は 2026/07/25 完了**。新 Public 作成・正本切替は PRG-PRJ-002 完了（2026/07/30）。
+- 公開・提供方針：再検討を経て **再確定（BLG-PRJ-008 完了）**。配置は **`prompts/`（公開代表）と `private/`（開発正本）の分離**（[`public_private_repo_topology.md`](../07_decisions/public_private_repo_topology.md)、[`public_prompts_at_repo_root.md`](../07_decisions/public_prompts_at_repo_root.md)）。物理分離は実施済み。**初回公開は新規 Public へ公開対象のみコピー**（[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md)）。履歴書き換えは行わない。LICENSE／名称／Maven・パッケージ反映は完了。**新 Public（https://github.com/ysmkotm/practical-app-starter）作成・push・正本切替は PRG-PRJ-002 完了**。`private` は Public ローカル＋`.gitignore`。ライセンスは Apache-2.0（BLG-PRJ-007）。棚卸し BLG-PRJ-009、記録ルール BLG-PRJ-010 完了。`knowledge/` 廃止・直下 `prompts/` 化は 2026/07/26 反映。
 - Version 区切り：必須／推奨／任意は §6。Version 2 以降は §7（PRG 化しない）。
-- 公開品質（初見視点）：PRG-PRJ-001／002 は改修、PRG-PRJ-003 は最終ゲートの検証（[`public_quality_walkthrough_gate.md`](../07_decisions/public_quality_walkthrough_gate.md)）。実施・記入は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）。
+- 公開品質（初見視点）：PRG-PRJ-001／002（改修）は完了。**残必須は PRG-PRJ-003（最終ゲートの検証）**（[`public_quality_walkthrough_gate.md`](../07_decisions/public_quality_walkthrough_gate.md)）。実施・記入は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）。
 - **PRG-PRJ-001 差別化メッセージ（2026/07/27）**: 戦略会議で、Version 1.0 公開時は「認知獲得の仕込み」に限定し、収益化本体は Version 3.x 予約を維持することを再確認。差別化メッセージ（「AI と人が同じ開発ドキュメントを見て開発する運用一式」）の `README.md` 冒頭への反映を **PRG-PRJ-001 の公開向け表現レビューに統合**（新規作業は増やさない）。最小 KPI・記事切り口・ターゲット仮説は [`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md) §5.6、発信チャネル選定・ターゲット検証は BLG-PRJ-012 / BLG-PRJ-013。
 - **PRG-PRJ-001 差別化メッセージ反映（2026/07/29）**: Claude Code レビューを経て `README.md` 冒頭を更新。タグライン「業務システムの再現可能な型 ― 開発ドキュメントを正本に、人と AI で進める」。概要2文目は「正本（SSOT）とし」に変更。自己定義（スターターキット兼リファレンス）は概要1文目に委譲。依頼文は `private/prompts/claude_review_differentiation_message.md`。
 - **PRG-PRJ-001 Document Version 初版揃え（2026/07/30）**: 公開対象（`docs/`・`prompts/README.md`。`private/` 除外。README アプリ Version は対象外）の Document Version を `1.0`、更新日を `2026/07/30` に揃えた（82件）。テンプレヘッダも対象。テンプレ本文の記載例（`1.0` / `YYYY/MM/DD`）と判断記録本文の旧版番号言及は維持。実際の公開日が異なる場合は更新日のみ再揃えする。
@@ -113,8 +113,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-PRJ-002|公開準備|必須|README／setup 通し、正式名称・Maven／パッケージ・ライセンス反映、**公開対象の確定・新 Public 作成・開発正本の切替**（**改修**）|実装中|公開体裁・パッケージ反映済み（2026/07/25）。残りは新 Public 作成・正本切替。PRG-PRJ-001 完了済み（[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md) §5.3）。構成は [`public_private_repo_topology.md`](../07_decisions/public_private_repo_topology.md)。公開セットは [`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)。検証は PRG-PRJ-003|
-|PRG-PRJ-003|公開品質|必須|GitHub 初見視点の公開品質ウォークスルー（必須項目の実施・必須 NG の是正確認）（**検証**）|未着手|PRG-PRJ-001・002 完了後（または並行改修後の最終確認）。実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）|
+|PRG-PRJ-003|公開品質|必須|GitHub 初見視点の公開品質ウォークスルー（必須項目の実施・必須 NG の是正確認）（**検証**）|未着手|PRG-PRJ-001・002 完了済み。Public リポジトリ側で最終確認。実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）|
 
 ### 5.2 完了
 
@@ -122,7 +121,14 @@
 
 |ID|スコープ|作業内容|完了日|関連|
 |---|---|---|---|---|
+|PRG-PRJ-002|公開準備|README／setup 通し、正式名称・Maven／パッケージ・ライセンス反映、**公開対象の確定・新 Public 作成・開発正本の切替**（**改修**）|2026/07/30|[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md) §5.3、[`public_private_repo_topology.md`](../07_decisions/public_private_repo_topology.md)、[`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)。検証は PRG-PRJ-003|
 |PRG-PRJ-001|横断|開発ドキュメントの公開向けレビュー・整理（リンク解消・表現レビュー A／B・Document Version 初版揃え）|2026/07/30|BLG-PRJ-002、BLG-PRJ-009、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)。検証は PRG-PRJ-003|
+
+##### PRG-PRJ-002（公開準備）
+
+- レビュー概要：新 Public リポジトリ作成、公開対象コピー、初回コミット／push、開発正本の切替まで完了
+- 修正・判断：公開漏れチェック（`private` 混入・秘密情報・非公開リンク・旧 `knowledge/` 残存）は問題なし。旧リポジトリへのアーカイブ注記は検討のうえ見送り（対応不要）
+- 反映：https://github.com/ysmkotm/practical-app-starter 。[`setup.md`](setup.md) の clone URL 確定。`.gitignore` に `/private/` 追加。作業正本を新 Public クローンへ切替。初回コミット `add: Version 1.0 初版公開`
 
 ##### PRG-PRJ-001（公開向け整理）
 
@@ -232,12 +238,12 @@
 |入力チェック|PRG-EMP-008 / 009|完了|EMP001 検索 + EMP002 Form。通し確認済|
 |CRUD 通し動作確認|PRG-EMP-009|完了|2026/07/24|
 |成功メッセージ（暫定）|PRG-CMN-003|完了|共通方針完全版は BLG-CMN-001（保留）のまま|
-|正式名称（公開名）|[`BLG-PRJ-001`](backlog.md)|完了|Practical App Starter — Spring Boot Edition。パッケージ等の反映は PRG-PRJ-002|
+|正式名称（公開名）|[`BLG-PRJ-001`](backlog.md)|完了|Practical App Starter — Spring Boot Edition。パッケージ等の反映は PRG-PRJ-002 完了|
 |公開・提供方針（公開形態・公開範囲・商用可否）|[`BLG-PRJ-008`](backlog.md)|完了|コード OSS／docs 公開／knowledge 一部非公開で再確定（2026/07/25）。[`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md) §5|
-|ライセンス|[`BLG-PRJ-007`](backlog.md)|完了|Apache License 2.0（[`license_selection.md`](../07_decisions/license_selection.md)）。PRG-PRJ-002 で `LICENSE`／README 反映|
-|knowledge 整理・docs→knowledge リンク解消|[`BLG-PRJ-009`](backlog.md)|完了|公開セット・リンク方針は [`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)。`knowledge`→`private` の残リンク解消は PRG-PRJ-001 で完了（2026/07/26）。新 Public へのコピーは PRG-PRJ-002|
+|ライセンス|[`BLG-PRJ-007`](backlog.md)|完了|Apache License 2.0（[`license_selection.md`](../07_decisions/license_selection.md)）。`LICENSE`／README 反映は PRG-PRJ-002 完了|
+|knowledge 整理・docs→knowledge リンク解消|[`BLG-PRJ-009`](backlog.md)|完了|公開セット・リンク方針は [`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)。`knowledge`→`private` の残リンク解消は PRG-PRJ-001 で完了（2026/07/26）。新 Public へのコピーは PRG-PRJ-002 完了|
 |公開方式（新規 Public スナップショット）|[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md)|完了|履歴書き換えは行わない。公開後の SSOT は Public。`private` はローカル＋`.gitignore`|
-|公開準備（README / setup 通し / 名称・ライセンス反映 / 新 Public 作成）|PRG-PRJ-002|実装中|公開体裁・パッケージ反映済み。残りは新 Public 作成・正本切替。PRG-PRJ-001 完了済み。検証は PRG-PRJ-003|
+|公開準備（README / setup 通し / 名称・ライセンス反映 / 新 Public 作成）|PRG-PRJ-002|完了|2026/07/30。新 Public push・正本切替済み。検証は PRG-PRJ-003|
 |docs 公開向け整理（リンク解消・表現レビュー・Document Version 初版揃え含む）|PRG-PRJ-001|完了|2026/07/30。全文完璧化は求めない。表現レビュー A／B・Document Version `1.0`／更新日揃え済み。検証は PRG-PRJ-003|
 |公開品質ウォークスルー（初見視点）|PRG-PRJ-003|未着手|実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）。必須 NG が残れば公開不可|
 
