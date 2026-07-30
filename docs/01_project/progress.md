@@ -113,7 +113,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-PRJ-003|公開品質|必須|GitHub 初見視点の公開品質ウォークスルー（必須項目の実施・必須 NG の是正確認）（**検証**）|未着手|PRG-PRJ-001・002 完了済み。Public リポジトリ側で最終確認。実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）|
+|PRG-PRJ-003|公開品質|必須|GitHub 初見視点の公開品質ウォークスルー（必須項目の実施・必須 NG の是正確認）（**検証**）|動作確認中|PRG-PRJ-001・002 完了済み。Public リポジトリ側で最終確認。実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）|
 
 ### 5.2 完了
 
@@ -245,7 +245,7 @@
 |公開方式（新規 Public スナップショット）|[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md)|完了|履歴書き換えは行わない。公開後の SSOT は Public。`private` はローカル＋`.gitignore`|
 |公開準備（README / setup 通し / 名称・ライセンス反映 / 新 Public 作成）|PRG-PRJ-002|完了|2026/07/30。新 Public push・正本切替済み。検証は PRG-PRJ-003|
 |docs 公開向け整理（リンク解消・表現レビュー・Document Version 初版揃え含む）|PRG-PRJ-001|完了|2026/07/30。全文完璧化は求めない。表現レビュー A／B・Document Version `1.0`／更新日揃え済み。検証は PRG-PRJ-003|
-|公開品質ウォークスルー（初見視点）|PRG-PRJ-003|未着手|実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）。必須 NG が残れば公開不可|
+|公開品質ウォークスルー（初見視点）|PRG-PRJ-003|動作確認中|実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）。必須 NG が残れば公開不可|
 
 ### 6.2 推奨（公開品質向上・無くても公開可だが望ましい）
 

@@ -23,6 +23,12 @@
 |PostgreSQL|17|
 |Git|最新版|
 
+Java が使えることは、次で確認できます（`21` 系であること）。
+
+```bash
+java -version
+```
+
 ### 推奨ツール
 
 必須ではありませんが、本プロジェクトでは次を想定しています。
@@ -129,11 +135,13 @@ Spring Bootアプリケーションを起動します。
 
 プロジェクトのルートディレクトリで、以下を実行します。
 
-Windows（PowerShell / コマンドプロンプト）
+Windows（PowerShell）
 
-```bash
-mvnw.cmd spring-boot:run
+```powershell
+.\mvnw.cmd spring-boot:run
 ```
+
+Windows（コマンドプロンプト）では `mvnw.cmd spring-boot:run` でも可。
 
 macOS / Linux
 
