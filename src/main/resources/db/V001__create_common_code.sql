@@ -1,0 +1,13 @@
+CREATE TABLE common_code (
+	common_code_id BIGSERIAL PRIMARY KEY,
+	code_type VARCHAR(50) NOT NULL,
+	code VARCHAR(50) NOT NULL,
+	code_name VARCHAR(100) NOT NULL,
+	display_order INTEGER NOT NULL DEFAULT 0,
+	deleted_flg BOOLEAN NOT NULL DEFAULT FALSE,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+	CONSTRAINT uk_common_code_type_code
+		UNIQUE (code_type, code)
+);

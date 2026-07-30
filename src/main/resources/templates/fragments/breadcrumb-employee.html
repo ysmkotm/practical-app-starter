@@ -1,0 +1,10 @@
+<nav class="employee-breadcrumb" th:fragment="breadcrumb-employee(currentLabel)" aria-label="パンくずリスト">
+	<ol class="breadcrumb mb-0 small">
+		<li class="breadcrumb-item"><a th:href="@{/}">TOP</a></li>
+		<li class="breadcrumb-item">社員管理</li>
+		<li class="breadcrumb-item" th:if="${currentLabel != '社員一覧'}">
+			<a th:href="@{/employee}">社員一覧</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page" th:text="${currentLabel}">社員一覧</li>
+	</ol>
+</nav>

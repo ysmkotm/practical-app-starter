@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>社員一覧 | Practical App Starter</title>
+	<th:block th:replace="~{fragments/css :: css}"></th:block>
+</head>
+<body>
+	<th:block th:replace="~{fragments/header :: header}"></th:block>
+
+	<div class="d-flex">
+		<th:block th:replace="~{fragments/sidebar :: sidebar}"></th:block>
+
+		<main class="app-main">
+			<div class="employee-page-header">
+				<nav aria-label="パンくずリスト"
+						th:replace="~{fragments/breadcrumb-employee :: breadcrumb-employee('社員一覧')}">
+				</nav>
+				<a class="btn btn-primary btn-sm" th:href="@{/employee/new}">新規登録</a>
+			</div>
+			<h1 class="visually-hidden">社員一覧</h1>
+
+			<div class="alert alert-success alert-dismissible fade show py-2 mb-3" role="alert"
+					th:if="${successMessage}">
+				<span th:text="${successMessage}">処理が完了しました。</span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+			</div>
+
+			<div class="card mb-3">
+				<div class="card-body py-2 px-3">
+					<form th:action="@{/employee}" th:object="${employeeSearchForm}" method="get">
+						<div class="row align-items-center employee-form-grid">
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="employeeCode">社員番号</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeCode"
+												th:field="*{employeeCode}"
+												th:classappend="${#fields.hasErrors('employeeCode')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('employeeCode')}" th:errors="*{employeeCode}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="employeeName">氏名</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeName"
+												th:field="*{employeeName}"
+												th:classappend="${#fields.hasErrors('employeeName')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="departmentId">部署</label>
+									<div class="col">
+										<select class="form-select form-select-sm" id="departmentId" th:field="*{departmentId}">
+											<option value="">すべて</option>
+											<option th:each="department : ${departments}"
+													th:value="${department.departmentId}"
+													th:text="${department.departmentName}">
+											</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="statusCode">状態</label>
+									<div class="col">
+										<select class="form-select form-select-sm" id="statusCode" th:field="*{statusCode}">
+											<option value="">すべて</option>
+											<option th:each="status : ${employeeStatuses}"
+													th:value="${status.code}"
+													th:text="${status.codeName}">
+											</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-auto col-md-6">
+								<div class="d-flex gap-2 justify-content-xl-end">
+									<button type="submit" class="btn btn-primary btn-sm">検索</button>
+									<a class="btn btn-outline-secondary btn-sm" th:href="@{/employee}">クリア</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body py-2 px-3">
+					<table id="employee-list-table" class="table table-sm table-bordered table-hover mb-0 w-100">
+						<thead class="table-light">
+							<tr>
+								<th>社員番号</th>
+								<th>氏名</th>
+								<th>部署</th>
+								<th>メールアドレス</th>
+								<th>状態</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="employee : ${employees}">
+								<td>
+									<a th:href="@{/employee/{id}/edit(id=${employee.employeeId})}"
+											th:text="${employee.employeeCode}"></a>
+								</td>
+								<td th:text="${employee.employeeName}"></td>
+								<td th:text="${employee.departmentName ?: '-'}"></td>
+								<td th:text="${employee.email}"></td>
+								<td th:text="${employee.statusName ?: '-'}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+	<script th:src="@{/js/employee/list.js}"></script>
+</body>
+</html>

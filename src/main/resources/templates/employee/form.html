@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${mode == 'create'} ? '社員登録 | Practical App Starter' : '社員編集 | Practical App Starter'">社員登録・編集 | Practical App Starter</title>
+	<th:block th:replace="~{fragments/css :: css}"></th:block>
+</head>
+<body>
+	<th:block th:replace="~{fragments/header :: header}"></th:block>
+
+	<div class="d-flex">
+		<th:block th:replace="~{fragments/sidebar :: sidebar}"></th:block>
+
+		<main class="app-main">
+			<div class="employee-page-header">
+				<nav aria-label="パンくずリスト"
+						th:replace="~{fragments/breadcrumb-employee :: breadcrumb-employee(${mode == 'create'} ? '社員登録' : '社員編集')}">
+				</nav>
+			</div>
+			<h1 class="visually-hidden" th:text="${mode == 'create'} ? '社員登録' : '社員編集'">社員登録</h1>
+
+			<div class="card employee-form-card">
+				<div class="card-body">
+					<form th:action="${mode == 'create'} ? @{/employee} : @{/employee/{id}(id=${employeeId})}"
+							th:object="${employeeForm}"
+							method="post">
+						<div class="alert alert-danger py-2 mb-3" th:if="${#fields.hasGlobalErrors()}">
+							<ul class="mb-0 ps-3">
+								<li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
+							</ul>
+						</div>
+
+						<div class="row employee-form-grid employee-form-grid--edit">
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="employeeCode">
+										社員番号 <span class="text-danger" th:if="${mode == 'create'}">*</span>
+									</label>
+									<div class="col">
+										<!-- 編集時は th:field を使わず name を付けないため POST に含まれない（disabled ではなく送信対象外） -->
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeCode"
+												th:field="*{employeeCode}"
+												th:if="${mode == 'create'}"
+												th:classappend="${#fields.hasErrors('employeeCode')} ? 'is-invalid'">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeCode"
+												th:value="*{employeeCode}"
+												readonly
+												th:if="${mode == 'edit'}">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('employeeCode')}" th:errors="*{employeeCode}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="employeeName">氏名 <span class="text-danger">*</span></label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeName"
+												th:field="*{employeeName}"
+												th:classappend="${#fields.hasErrors('employeeName')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="employeeNameKana">氏名カナ</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="employeeNameKana"
+												th:field="*{employeeNameKana}"
+												th:classappend="${#fields.hasErrors('employeeNameKana')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('employeeNameKana')}" th:errors="*{employeeNameKana}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="email">メールアドレス <span class="text-danger">*</span></label>
+									<div class="col">
+										<input type="email"
+												class="form-control form-control-sm"
+												id="email"
+												th:field="*{email}"
+												th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="phoneNumber">電話番号</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="phoneNumber"
+												th:field="*{phoneNumber}"
+												th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="departmentId">部署 <span class="text-danger">*</span></label>
+									<div class="col">
+										<select class="form-select form-select-sm"
+												id="departmentId"
+												th:field="*{departmentId}"
+												th:classappend="${#fields.hasErrors('departmentId')} ? 'is-invalid'">
+											<option value="">選択してください</option>
+											<option th:each="department : ${departments}"
+													th:value="${department.departmentId}"
+													th:text="${department.departmentName}">
+											</option>
+										</select>
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="position">役職</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="position"
+												th:field="*{position}"
+												th:classappend="${#fields.hasErrors('position')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="hireDate">入社日 <span class="text-danger">*</span></label>
+									<div class="col">
+										<input type="date"
+												class="form-control form-control-sm"
+												id="hireDate"
+												name="hireDate"
+												lang="ja"
+												th:value="${employeeForm.hireDate != null ? #temporals.format(employeeForm.hireDate, 'yyyy-MM-dd') : ''}"
+												th:classappend="${#fields.hasErrors('hireDate')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('hireDate')}" th:errors="*{hireDate}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="statusCode">在籍区分 <span class="text-danger">*</span></label>
+									<div class="col">
+										<select class="form-select form-select-sm"
+												id="statusCode"
+												th:field="*{statusCode}"
+												th:classappend="${#fields.hasErrors('statusCode')} ? 'is-invalid'">
+											<option value="">選択してください</option>
+											<option th:each="status : ${employeeStatuses}"
+													th:value="${status.code}"
+													th:text="${status.codeName}">
+											</option>
+										</select>
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('statusCode')}" th:errors="*{statusCode}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="remoteWorkFlg">リモートワーク</label>
+									<div class="col">
+										<div class="form-check">
+											<input type="checkbox"
+													class="form-check-input"
+													id="remoteWorkFlg"
+													th:field="*{remoteWorkFlg}">
+											<label class="form-check-label visually-hidden" for="remoteWorkFlg">リモートワーク</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="row g-2 align-items-start">
+									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="remarks">備考</label>
+									<div class="col">
+										<textarea class="form-control form-control-sm"
+												id="remarks"
+												rows="3"
+												th:field="*{remarks}"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="border-top border-opacity-10 mt-5 pt-3">
+							<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 form-actions"
+									th:if="${mode == 'edit'}">
+								<button type="submit"
+										class="btn btn-outline-danger btn-sm"
+										form="employee-delete-form"
+										formmethod="post">削除</button>
+								<div class="d-flex gap-2">
+									<a class="btn btn-outline-secondary btn-form-action" th:href="@{/employee}">一覧へ戻る</a>
+									<button type="submit" class="btn btn-primary btn-form-action">更新</button>
+								</div>
+							</div>
+							<div class="d-flex flex-wrap justify-content-end gap-2 form-actions" th:if="${mode == 'create'}">
+								<a class="btn btn-outline-secondary btn-form-action" th:href="@{/employee}">一覧へ戻る</a>
+								<button type="submit" class="btn btn-primary btn-form-action">登録</button>
+							</div>
+						</div>
+					</form>
+
+					<form th:if="${mode == 'edit'}"
+							id="employee-delete-form"
+							th:action="@{/employee/{id}/delete(id=${employeeId})}"
+							method="post"
+							class="d-none"
+							th:data-confirm-message="|${employeeForm.employeeCode}：${employeeForm.employeeName} さんを削除します。よろしいですか？|">
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+	<script th:src="@{/js/employee/form.js}"></script>
+</body>
+</html>

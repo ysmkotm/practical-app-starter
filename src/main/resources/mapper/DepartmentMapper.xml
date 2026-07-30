@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.ysmkotm.practicalappstarter.mapper.DepartmentMapper">
+
+	<resultMap id="DepartmentResultMap" type="Department">
+		<id column="department_id" property="departmentId"/>
+		<result column="department_code" property="departmentCode"/>
+		<result column="department_name" property="departmentName"/>
+		<result column="display_order" property="displayOrder"/>
+		<result column="deleted_flg" property="deletedFlg"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap>
+
+	<select id="findDepartments" resultMap="DepartmentResultMap">
+		SELECT
+			department_id,
+			department_code,
+			department_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM department
+		WHERE deleted_flg = false
+		ORDER BY display_order ASC, department_code ASC
+	</select>
+
+	<select id="findDepartmentById" resultMap="DepartmentResultMap">
+		SELECT
+			department_id,
+			department_code,
+			department_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM department
+		WHERE department_id = #{departmentId}
+			AND deleted_flg = false
+	</select>
+
+	<select id="findDepartmentByIdIncludingDeleted" resultMap="DepartmentResultMap">
+		SELECT
+			department_id,
+			department_code,
+			department_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM department
+		WHERE department_id = #{departmentId}
+	</select>
+
+</mapper>

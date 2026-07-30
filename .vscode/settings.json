@@ -1,0 +1,8 @@
+{
+  // pom.xml変更時は自動同期する（AI開発時の同期漏れ防止）
+  "java.configuration.updateBuildConfiguration": "automatic",
+
+  // Null AnalysisはVersion1では採用しない。
+  // 将来的にJSpecifyやNullAway等を導入する場合は再検討する。
+  "java.compile.nullAnalysis.mode": "disabled"
+}

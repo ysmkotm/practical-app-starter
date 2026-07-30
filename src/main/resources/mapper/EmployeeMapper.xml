@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.ysmkotm.practicalappstarter.mapper.EmployeeMapper">
+
+	<resultMap id="EmployeeListItemResultMap" type="EmployeeListItemDto">
+		<id column="employee_id" property="employeeId"/>
+		<result column="employee_code" property="employeeCode"/>
+		<result column="employee_name" property="employeeName"/>
+		<result column="department_name" property="departmentName"/>
+		<result column="email" property="email"/>
+		<result column="status_name" property="statusName"/>
+	</resultMap>
+
+	<select id="searchEmployees" resultMap="EmployeeListItemResultMap">
+		SELECT
+			e.employee_id,
+			e.employee_code,
+			e.employee_name,
+			d.department_name,
+			e.email,
+			c.code_name AS status_name
+		FROM employee e
+		LEFT JOIN department d
+			ON e.department_id = d.department_id
+			AND d.deleted_flg = false
+		LEFT JOIN common_code c
+			ON e.status_code = c.code
+			AND c.code_type = 'EMPLOYEE_STATUS'
+			AND c.deleted_flg = false
+		<where>
+			e.deleted_flg = false
+			<if test="employeeCode != null">
+				AND e.employee_code LIKE CONCAT(REPLACE(REPLACE(REPLACE(#{employeeCode}, '\', '\\'), '%', '\%'), '_', '\_'), '%') ESCAPE '\'
+			</if>
+			<if test="employeeName != null">
+				AND e.employee_name LIKE CONCAT('%', REPLACE(REPLACE(REPLACE(#{employeeName}, '\', '\\'), '%', '\%'), '_', '\_'), '%') ESCAPE '\'
+			</if>
+			<if test="departmentId != null">
+				AND e.department_id = #{departmentId}
+			</if>
+			<if test="statusCode != null">
+				AND e.status_code = #{statusCode}
+			</if>
+		</where>
+		ORDER BY e.employee_code ASC
+	</select>
+
+	<resultMap id="EmployeeResultMap" type="Employee">
+		<id column="employee_id" property="employeeId"/>
+		<result column="employee_code" property="employeeCode"/>
+		<result column="employee_name" property="employeeName"/>
+		<result column="employee_name_kana" property="employeeNameKana"/>
+		<result column="email" property="email"/>
+		<result column="phone_number" property="phoneNumber"/>
+		<result column="department_id" property="departmentId"/>
+		<result column="position" property="position"/>
+		<result column="hire_date" property="hireDate"/>
+		<result column="status_code" property="statusCode"/>
+		<result column="remote_work_flg" property="remoteWorkFlg"/>
+		<result column="remarks" property="remarks"/>
+		<result column="deleted_flg" property="deletedFlg"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap>
+
+	<select id="findEmployeeById" resultMap="EmployeeResultMap">
+		SELECT
+			employee_id,
+			employee_code,
+			employee_name,
+			employee_name_kana,
+			email,
+			phone_number,
+			department_id,
+			position,
+			hire_date,
+			status_code,
+			remote_work_flg,
+			remarks,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM employee
+		WHERE employee_id = #{employeeId}
+			AND deleted_flg = false
+	</select>
+
+	<select id="countByEmployeeCode" resultType="int">
+		SELECT COUNT(*)
+		FROM employee
+		WHERE employee_code = #{employeeCode}
+			AND deleted_flg = false
+		<if test="excludeEmployeeId != null">
+			AND employee_id != #{excludeEmployeeId}
+		</if>
+	</select>
+
+	<select id="countByEmail" resultType="int">
+		SELECT COUNT(*)
+		FROM employee
+		WHERE email = #{email}
+			AND deleted_flg = false
+		<if test="excludeEmployeeId != null">
+			AND employee_id != #{excludeEmployeeId}
+		</if>
+	</select>
+
+	<insert id="insertEmployee" useGeneratedKeys="true" keyProperty="employeeId" keyColumn="employee_id">
+		INSERT INTO employee (
+			employee_code,
+			employee_name,
+			employee_name_kana,
+			email,
+			phone_number,
+			department_id,
+			position,
+			hire_date,
+			status_code,
+			remote_work_flg,
+			remarks,
+			deleted_flg
+		) VALUES (
+			#{employeeCode},
+			#{employeeName},
+			#{employeeNameKana},
+			#{email},
+			#{phoneNumber},
+			#{departmentId},
+			#{position},
+			#{hireDate},
+			#{statusCode},
+			#{remoteWorkFlg},
+			#{remarks},
+			false
+		)
+	</insert>
+
+	<update id="updateEmployee">
+		UPDATE employee
+		SET
+			employee_name = #{employeeName},
+			employee_name_kana = #{employeeNameKana},
+			email = #{email},
+			phone_number = #{phoneNumber},
+			department_id = #{departmentId},
+			position = #{position},
+			hire_date = #{hireDate},
+			status_code = #{statusCode},
+			remote_work_flg = #{remoteWorkFlg},
+			remarks = #{remarks},
+			updated_at = CURRENT_TIMESTAMP
+		WHERE employee_id = #{employeeId}
+			AND deleted_flg = false
+	</update>
+
+	<update id="logicalDeleteEmployee">
+		UPDATE employee
+		SET
+			deleted_flg = true,
+			updated_at = CURRENT_TIMESTAMP
+		WHERE employee_id = #{employeeId}
+			AND deleted_flg = false
+	</update>
+
+</mapper>

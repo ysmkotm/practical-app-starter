@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.ysmkotm.practicalappstarter.mapper.CommonCodeMapper">
+
+	<resultMap id="CommonCodeResultMap" type="CommonCode">
+		<id column="common_code_id" property="commonCodeId"/>
+		<result column="code_type" property="codeType"/>
+		<result column="code" property="code"/>
+		<result column="code_name" property="codeName"/>
+		<result column="display_order" property="displayOrder"/>
+		<result column="deleted_flg" property="deletedFlg"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="updated_at" property="updatedAt"/>
+	</resultMap>
+
+	<select id="findByCodeType" resultMap="CommonCodeResultMap">
+		SELECT
+			common_code_id,
+			code_type,
+			code,
+			code_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM common_code
+		WHERE code_type = #{codeType}
+			AND deleted_flg = false
+		ORDER BY display_order ASC, code ASC
+	</select>
+
+	<select id="findByCodeTypeAndCode" resultMap="CommonCodeResultMap">
+		SELECT
+			common_code_id,
+			code_type,
+			code,
+			code_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM common_code
+		WHERE code_type = #{codeType}
+			AND code = #{code}
+			AND deleted_flg = false
+	</select>
+
+	<select id="findByCodeTypeAndCodeIncludingDeleted" resultMap="CommonCodeResultMap">
+		SELECT
+			common_code_id,
+			code_type,
+			code,
+			code_name,
+			display_order,
+			deleted_flg,
+			created_at,
+			updated_at
+		FROM common_code
+		WHERE code_type = #{codeType}
+			AND code = #{code}
+	</select>
+
+</mapper>

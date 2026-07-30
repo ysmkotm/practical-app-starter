@@ -1,0 +1,15 @@
+{
+  // VS Code Javaデバッグ構成
+  // https://code.visualstudio.com/docs/java/java-debugging
+  // projectName は指定しない（Maven artifactId 変更直後の認識ずれを避ける。mainClass で特定する）
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "PracticalAppStarterApplication",
+      "request": "launch",
+      "mainClass": "io.github.ysmkotm.practicalappstarter.PracticalAppStarterApplication",
+      "console": "integratedTerminal"
+    }
+  ]
+}
