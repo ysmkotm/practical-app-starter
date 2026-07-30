@@ -1,6 +1,6 @@
 # バックログ
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
 **更新日** : 2026/07/30
 
@@ -128,7 +128,6 @@
 |BLG-CMN-013|サイドバーのハンバーガーメニュー・折りたたみ化|狭い画面向けにサイドバーを折りたたみ可能にするか。現時点は固定幅（150px）+ `flex-shrink: 0` で対応|Version 1.0 任意|未検討|[`fragments/sidebar.html`](../../src/main/resources/templates/fragments/sidebar.html)、[`common.css`](../../src/main/resources/static/css/common.css)|
 |BLG-CMN-014|業務画面の表示タイトル（visible h1）の要否|パンくず最終項目のみで足りるか、Main 内に `h2` 等の画面タイトルを表示するか|Version 1.0 任意|未検討|[`docs/02_rules/ui.md`](../02_rules/ui.md) §3.7、EMP001・EMP002 テンプレート|
 |BLG-CMN-008|一覧画面の縦スクロール・ヘッダー固定|`scrollY`・テーブルヘッダー固定・一覧内部スクロールの採用可否。画面全体とテーブル内の二重スクロール、件数が少ない場合の空白、表示崩れを確認する|Version 1.x または実画面で問題になったとき|未検討|[`docs/02_rules/ui.md`](../02_rules/ui.md) §3.7、[`EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md) §8.6|
-|BLG-CMN-009|業務画面の表示確認（1366×768 等）|想定解像度での情報量・折り返し・操作性を確認し、必要ならレイアウトを調整する|Version 1.0 公開前（推奨）|未検討|[`docs/02_rules/ui.md`](../02_rules/ui.md) §3.7、[`progress.md`](progress.md) §6.2|
 |BLG-CMN-010|DataTables 初期化の共通化|`dom` 等の一覧画面共通設定を共通 JS へ切り出すか。BLG-CMN-015 の棚卸し結果に基づき、2 件目以降の一覧画面実装前または同時に着手する|Version 1.x（2 件目以降の一覧、または BLG-CMN-015）|未検討|BLG-CMN-015（親項目）、[`docs/02_rules/ui.md`](../02_rules/ui.md) §3.7、[`static/js/employee/list.js`](../../src/main/resources/static/js/employee/list.js)|
 |BLG-CMN-011|ページ上部レイアウトの fragment 化|パンくず＋主要操作の 1 行構成を fragment 化するか。EMP001（パンくず＋新規登録）・EMP002（パンくずのみ、`th:replace` 時のラッパー `div` パターン）で構造は確定済み。汎用 fragment 化は BLG-CMN-015 の整理後に検討する|Version 1.x（BLG-CMN-015 と同時期）|未検討|BLG-CMN-015（親項目）、[`docs/02_rules/ui.md`](../02_rules/ui.md) §2.4・§3.7。社員管理パンくずは [`breadcrumb-employee.html`](../../src/main/resources/templates/fragments/breadcrumb-employee.html) で対応済み。一覧のパンくず＋主要操作 1 行は未 fragment 化|
 |BLG-CMN-012|検索項目が多い画面でのレイアウト|検索条件が EMP001 より多い画面での横並び・折り返し方針|該当する検索画面の設計・実装時（Version 1.x 以降）|未検討|[`docs/02_rules/ui.md`](../02_rules/ui.md) §3.7|
@@ -174,6 +173,12 @@
 |BLG-PRJ-008|公開・提供方針（公開形態・公開範囲・商用可否・収益化）の決定|主目的の優先順位、公開形態、公開範囲、収益化の時期と形態、ライセンス制約を決める。一度「V1 フル公開・OSS 寄り」で決定後、商用の扱い・公開範囲を絞りたい意向により再検討へ差し戻し、再確定した|Version 1.0 公開前（必須）|完了|**コードは OSS 公開**、`docs` は公開、`private/ai_logs`・`private/contents`・`private/verification` は非公開、`prompts/` は代表のみ公開。進め方は将来の有料教材候補。[`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md) §5。下流：BLG-PRJ-007（完了）、BLG-PRJ-009（完了）、BLG-PRJ-010、PRG-PRJ-002|
 |BLG-PRJ-009|公開範囲確定に伴う `knowledge/` 配下の整理とリンク切れ解消|公開範囲の確定（[`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md) §5.2）を受け、(1) `knowledge/` を公開・非公開の観点で棚卸し・整理する (2) 公開する `docs` から非公開予定の `knowledge/` へのリンク切れを解消する|Version 1.0 公開前（必須）|完了|公開セット・リンク方針は [`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)。Git 除外は [`PRG-PRJ-002`](progress.md)。`knowledge/` 内の `private/` へのクリック可能リンク解消は [`PRG-PRJ-001`](progress.md) で完了（2026/07/26）。関連：`prompts/README.md`（公開代表は prompts/）、BLG-PRJ-010|
 |BLG-PRJ-010|記録係ルールの公開/非公開整理と docs 正本化|公開範囲の確定を受け、記録種別ごとに公開/非公開を明示し、書き分け基準をルールへ反映する。詳細は `.cursor/rules` ではなく docs を正本とする|Version 1.0 公開前（推奨）|完了|[`recording.md`](../02_rules/recording.md) を新設。[`recording.mdc`](../../.cursor/rules/recording.mdc) は行動トリガーにスリム化。[`cursor_rules_slimming.md`](../07_decisions/cursor_rules_slimming.md) 追記。関連：[`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md) §5.2、[`development.md`](../02_rules/development.md) §8|
+
+#### 共通機能（CMN）
+
+|ID|項目|内容|検討タイミング|状態|関連情報|
+|---|---|---|---|---|---|
+|BLG-CMN-009|業務画面の表示確認（1366×768 等）|想定解像度での情報量・折り返し・操作性を確認し、必要ならレイアウトを調整する|Version 1.0 公開前（推奨）|完了|PRG-PRJ-003 で致命的崩れなしを確認（2026/07/30）。レイアウト本調整は不要と判断。再発時や解像度要件の厳格化は Version 1.x。[`ui.md`](../02_rules/ui.md) §3.7、[`progress.md`](progress.md) §6.2|
 
 #### 社員管理（EMP）
 
