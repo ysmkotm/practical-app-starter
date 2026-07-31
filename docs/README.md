@@ -1,8 +1,8 @@
 # 開発ドキュメント索引
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/07/31
 
 ---
 
@@ -65,7 +65,7 @@
 |ドキュメントの作成・修正|[`docs/02_rules/documentation.md`](02_rules/documentation.md)|
 |記録の振り分け|[`docs/02_rules/recording.md`](02_rules/recording.md)、[`docs/02_rules/development.md`](02_rules/development.md) §8|
 |Git 操作|[`docs/02_rules/git.md`](02_rules/git.md)|
-|作業再開・進捗管理|[`docs/01_project/progress.md`](01_project/progress.md)|
+|作業再開・現在地整理・次タスク|[`docs/01_project/progress.md`](01_project/progress.md)、[`docs/01_project/backlog.md`](01_project/backlog.md)、[`docs/01_project/review_findings.md`](01_project/review_findings.md)、[`docs/01_project/project.md`](01_project/project.md) §4（ロードマップ。未着手テーマの正本。）|
 |保留事項・未決定事項|[`docs/01_project/backlog.md`](01_project/backlog.md)|
 |レビュー指摘の追跡|[`docs/01_project/review_findings.md`](01_project/review_findings.md)|
 |判断事項の記録（決定済み）|[`docs/07_decisions/`](07_decisions/)、[`docs/02_rules/recording.md`](02_rules/recording.md)、[`docs/02_rules/development.md`](02_rules/development.md) §8|
