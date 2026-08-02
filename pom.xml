@@ -65,6 +65,16 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 
+		<!-- DBマイグレーション（起動時に classpath:db/migration を適用） -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
+
 		<!-- 開発支援用（自動再起動など） -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
