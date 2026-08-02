@@ -1,8 +1,8 @@
 # プロジェクト概要
 
-**Document Version** : 1.1
+**Document Version** : 1.2
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 ---
 
@@ -87,10 +87,11 @@ Version 1.0 公開後の増分です。公開ブロッカーにはしません�
 
 #### 技術対応
 
-- Flyway
 - Spring Security
 - Docker
 - Spring Boot 4.x 対応（必要になった時点）
+
+（Flyway は Version 1.x で導入済み。方針は [`flyway_adoption.md`](../07_decisions/flyway_adoption.md)、進捗は [`progress.md`](progress.md) の PRG-CMN-004）
 
 #### 品質・標準化（軽いもの）
 

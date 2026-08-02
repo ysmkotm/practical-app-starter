@@ -103,7 +103,7 @@ AIには**設計・実装・レビュー**に加え、**作業管理、判断の
 
 - CSV入出力
 - Spring Security対応
-- Flyway対応
+- Docker対応
 - AI協調開発プロセスの改善
 
 詳細なロードマップは [`docs/01_project/project.md`](docs/01_project/project.md) §4 を参照してください。

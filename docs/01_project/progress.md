@@ -1,6 +1,6 @@
 # 進捗管理
 
-**Document Version** : 1.4
+**Document Version** : 1.5
 
 **更新日** : 2026/08/02
 
@@ -63,9 +63,9 @@
 |項目|内容|
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
-|現在のフォーカス|Version 1.0 必須完了後。Version 1.x の Flyway 導入（PRG-CMN-004）、または公開後の認知仕込み（BLG-PRJ-012 等）／任意（PRG-EMP-010）|
-|直近の完了|PRG-PRJ-003（初見ウォークスルー）（2026/07/30）|
-|次のタスク|1. PRG-CMN-004（Flyway 導入。採用方針は [`flyway_adoption.md`](../07_decisions/flyway_adoption.md)） 2. 公開後の発信チャネル選定（[`BLG-PRJ-012`](backlog.md)、推奨） 3. 任意なら PRG-EMP-010（構造見直し）|
+|現在のフォーカス|Version 1.0 必須完了後。公開後の認知仕込み（BLG-PRJ-012 等）、または Version 1.x の残り（Security／Docker 等）／任意（PRG-EMP-010）|
+|直近の完了|PRG-CMN-004（Flyway 導入）（2026/08/02）|
+|次のタスク|1. 公開後の発信チャネル選定（[`BLG-PRJ-012`](backlog.md)、推奨） 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ §7 / Version 2 以降|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
 |最終更新|2026/08/02|
@@ -91,7 +91,7 @@
 - EMP002 POST：Validation Groups 採用等は [`emp002_post_validation_groups.md`](../07_decisions/emp002_post_validation_groups.md)。削除済みマスタの現在値維持は [`emp002_soft_deleted_master_reference.md`](../07_decisions/emp002_soft_deleted_master_reference.md)。
 - F-01 の `PSQLException` 依存は EMP002 最小実装として当面維持。将来の責務見直しは [`BLG-CMN-017`](backlog.md)（Version 1.x 以降）。
 - 2026/07/23：作業管理を PRG 中心に再編。REV-ID・レビュー専用章を廃止（[`progress_prg_centric_work_management.md`](../07_decisions/progress_prg_centric_work_management.md)）。
-- **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。2026/08/02 に手動 SQL・Flyway・Liquibase を比較し、Flyway 採用と既存 DB の移行方針を決定（[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)）。実装はCursor（[`ai.md`](../02_rules/ai.md) §2 の役割分担どおり）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`。
+- **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。2026/08/02 に手動 SQL・Flyway・Liquibase を比較し、Flyway 採用と既存 DB の移行方針を決定（[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)）。実装・動作確認は 2026/08/02 完了（§5.2）。
 
 ---
 
@@ -103,9 +103,7 @@
 
 #### 共通（CMN）
 
-|ID|スコープ|優先度|作業内容|状態|関連|
-|---|---|---|---|---|---|
-|PRG-CMN-004|DBマイグレーション基盤|高（優先度引き上げ）|Flyway導入（依存追加・既存SQLのFlyway化・設定・setup.md更新）|未着手|Version 1.x技術対応（[`project.md`](project.md) §4）。採用・移行方針は [`flyway_adoption.md`](../07_decisions/flyway_adoption.md)。実装依頼は `private/prompts/cursor_flyway_migration_request.md`（実装はCursor、[`ai.md`](../02_rules/ai.md) §2）|
+（未完了なし）
 
 #### 社員管理（EMP）
 
@@ -149,9 +147,16 @@
 
 |ID|スコープ|作業内容|完了日|関連|
 |---|---|---|---|---|
+|PRG-CMN-004|DBマイグレーション基盤|Flyway導入（依存追加・既存SQLの標準配置移動・setup.md／db.md更新・動作確認）|2026/08/02|[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)、[`setup.md`](setup.md) §5、[`db.md`](../02_rules/db.md) §6|
 |PRG-CMN-003|メッセージ表示|登録・更新・削除後の成功メッセージ暫定実装|2026/07/24|[`BLG-EMP-005`](backlog.md)、[`BLG-CMN-001`](backlog.md)、[`ui.md`](../02_rules/ui.md) §7|
 |PRG-CMN-002|CMN001|TOP 画面の完成度確認・整備（パンくず要否を含む）|2026/07/24|[`CMN001_TOP.md`](../05_screen/CMN001_TOP.md)|
 |PRG-CMN-001|共通レイアウト|全画面での fragment 利用・表示確認|2026/07/24|[`ui.md`](../02_rules/ui.md) §2.3・§2.4|
+
+##### PRG-CMN-004（Flyway 導入）
+
+- レビュー概要：起動時自動マイグレーションに置換。空 DB への適用・2 回目起動・既存 CRUD を動作確認済み
+- 修正・判断：既存ローカル DB は再作成を標準。`baseline-on-migrate` は既定で有効にしない（[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)）
+- 反映：`pom.xml`、`src/main/resources/db/migration/`、[`setup.md`](setup.md)、[`db.md`](../02_rules/db.md)
 
 ##### PRG-CMN-003（成功メッセージ暫定）
 
@@ -298,7 +303,7 @@
 |テーマ|目安 Version|関連|
 |---|---|---|
 |CSV / ファイルアップロード / メール|1.x|[`project.md`](project.md) §4|
-|Spring Security / Flyway / Docker|1.x|[`project.md`](project.md) §4|
+|Spring Security / Docker|1.x|[`project.md`](project.md) §4（Flyway は PRG-CMN-004 完了）|
 |UI パターン共通化・fragment 化|1.x|[`BLG-CMN-015`](backlog.md) および子項目|
 |メッセージ・例外方針の本格整備|1.x|BLG-CMN-001 / 002|
 |DB 例外判定・論理削除マスタ補完の共通化|1.x（2 画面目以降）|BLG-CMN-017 / 018|
