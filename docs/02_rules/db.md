@@ -1,8 +1,8 @@
 # DB設計ルール
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 ---
 
@@ -97,22 +97,23 @@
 ## 6. SQLファイル管理
 
 - DDL・初期データ投入SQLはGitで管理する。
-- SQLファイルは `src/main/resources/db` 配下に配置する。
-- 将来Flywayを導入することを見据え、ファイル名はFlyway形式にする。
+- SQLファイルは Flyway の標準配置である `src/main/resources/db/migration` 配下に配置する。
+- アプリケーション起動時に Flyway が未適用のマイグレーションを自動適用する。
 - ファイル名は `V<連番>__<内容>.sql` とする。
-  - 例：[`src/main/resources/db/V001__create_common_code.sql`](../../src/main/resources/db/V001__create_common_code.sql)
-  - 例：[`src/main/resources/db/V002__insert_common_code.sql`](../../src/main/resources/db/V002__insert_common_code.sql)
-  - 例：[`src/main/resources/db/V003__create_department.sql`](../../src/main/resources/db/V003__create_department.sql)
-  - 例：[`src/main/resources/db/V004__insert_department.sql`](../../src/main/resources/db/V004__insert_department.sql)
-  - 例：[`src/main/resources/db/V005__create_employee.sql`](../../src/main/resources/db/V005__create_employee.sql)
-  - 例：[`src/main/resources/db/V006__insert_employee.sql`](../../src/main/resources/db/V006__insert_employee.sql)
+  - 例：[`src/main/resources/db/migration/V001__create_common_code.sql`](../../src/main/resources/db/migration/V001__create_common_code.sql)
+  - 例：[`src/main/resources/db/migration/V002__insert_common_code.sql`](../../src/main/resources/db/migration/V002__insert_common_code.sql)
+  - 例：[`src/main/resources/db/migration/V003__create_department.sql`](../../src/main/resources/db/migration/V003__create_department.sql)
+  - 例：[`src/main/resources/db/migration/V004__insert_department.sql`](../../src/main/resources/db/migration/V004__insert_department.sql)
+  - 例：[`src/main/resources/db/migration/V005__create_employee.sql`](../../src/main/resources/db/migration/V005__create_employee.sql)
+  - 例：[`src/main/resources/db/migration/V006__insert_employee.sql`](../../src/main/resources/db/migration/V006__insert_employee.sql)
 - テーブル作成DDLと初期データ投入SQLは分けて管理する。
-- SQLファイルはバージョン順に追加し、既存ファイルは原則として変更しない。
+- SQLファイルはバージョン順に追加し、適用済みファイルは原則として変更しない。
+- 既存 DB の初回移行方針（再作成を標準とする等）は [`docs/07_decisions/flyway_adoption.md`](../07_decisions/flyway_adoption.md) および [`docs/01_project/setup.md`](../01_project/setup.md) §5 を参照する。
 
 現時点の構成は次のとおりです。
 
 ```text
-src/main/resources/db
+src/main/resources/db/migration
 ├── V001__create_common_code.sql
 ├── V002__insert_common_code.sql
 ├── V003__create_department.sql

@@ -1,8 +1,8 @@
 # 共通コード一覧
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 本ドキュメントは、システム全体で使用する共通コード（`common_code`）のコード種別・コード値を俯瞰するための一覧です。
 共通コードの仕組み自体は [`docs/02_rules/db.md`](../02_rules/db.md) §4、テーブル構造は [`docs/04_db/table/common_code.md`](../04_db/table/common_code.md) を参照してください。
@@ -46,4 +46,4 @@
 
 ## 5. 備考
 
-- コード種別・コード値の実データは [`src/main/resources/db/V002__insert_common_code.sql`](../../src/main/resources/db/V002__insert_common_code.sql) を正とし、本一覧は追加・変更のタイミングで追従します。
+- コード種別・コード値の実データは [`src/main/resources/db/migration/V002__insert_common_code.sql`](../../src/main/resources/db/migration/V002__insert_common_code.sql) を正とし、本一覧は追加・変更のタイミングで追従します。

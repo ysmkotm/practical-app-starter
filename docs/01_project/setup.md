@@ -1,8 +1,8 @@
 # 開発環境構築
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 ---
 
@@ -72,8 +72,7 @@ Cursor / VS Code 向けに「Extension Pack for Java」等の Java 拡張を導�
 
 PostgreSQLへ接続し、プロジェクト用データベースを作成します。
 
-DDL・初期データは `src/main/resources/db` 配下のSQLを利用します。  
-現時点ではFlyway未導入のため、SQLは手動で実行します。
+DDL・初期データは [`src/main/resources/db/migration`](../../src/main/resources/db/migration) 配下の SQL を、アプリケーション起動時に Flyway が自動適用します。SQL の手動実行は不要です。
 
 ### 接続情報（開発用）
 
@@ -100,26 +99,30 @@ CREATE DATABASE practical_app_starter
 	ENCODING 'UTF8';
 ```
 
-#### 2. DDL・初期データを投入する
+空のデータベースを用意すれば十分です。テーブル作成と初期データ投入は、§6 のアプリケーション起動時に Flyway が行います。
 
-`practical_app_starter` データベースに接続し、以下のSQLを **番号順** に実行します。
+#### 2. 手動 SQL で作成済みの DB がある場合
 
-|順番|ファイル|内容|
-|---|---|---|
-|1|[`src/main/resources/db/V001__create_common_code.sql`](../../src/main/resources/db/V001__create_common_code.sql)|共通コードマスタ作成|
-|2|[`src/main/resources/db/V002__insert_common_code.sql`](../../src/main/resources/db/V002__insert_common_code.sql)|共通コードマスタの初期データ投入|
-|3|[`src/main/resources/db/V003__create_department.sql`](../../src/main/resources/db/V003__create_department.sql)|部署マスタ作成|
-|4|[`src/main/resources/db/V004__insert_department.sql`](../../src/main/resources/db/V004__insert_department.sql)|部署マスタの初期データ投入|
-|5|[`src/main/resources/db/V005__create_employee.sql`](../../src/main/resources/db/V005__create_employee.sql)|社員マスタ作成|
-|6|[`src/main/resources/db/V006__insert_employee.sql`](../../src/main/resources/db/V006__insert_employee.sql)|社員マスタの初期データ投入|
+以前の手順で SQL を手動実行して作成したローカル DB がある場合は、次のとおりです。
 
-#### 3. テーブル作成を確認する
+- **保存すべきデータがない環境（標準）**: 既存 DB を削除して再作成し、空の DB に対して Flyway に `V001` ～ `V006` を適用させます。
 
-以下のテーブルが作成されていればOKです。
+```sql
+DROP DATABASE IF EXISTS practical_app_starter;
+CREATE DATABASE practical_app_starter
+	ENCODING 'UTF8';
+```
+
+- **保存すべきデータがある環境**: 一律に自動 baseline しません。バックアップを取得したうえで、環境ごとに baseline またはデータ移行手順を個別に判断してください。方針の詳細は [`docs/07_decisions/flyway_adoption.md`](../07_decisions/flyway_adoption.md) を参照してください。
+
+#### 3. テーブル作成の確認（起動後）
+
+§6 でアプリケーションを起動したあと、以下のテーブルが作成されていればOKです。
 
 - `common_code`
 - `department`
 - `employee`
+- `flyway_schema_history`（Flyway が適用履歴を記録するテーブル）
 
 ---
 
@@ -153,7 +156,8 @@ macOS / Linux
 
 ### 起動確認
 
-コンソールにエラーが出ず、起動ログが表示されれば成功です。
+コンソールにエラーが出ず、起動ログが表示されれば成功です。  
+初回起動時は Flyway が `V001` ～ `V006` を適用します（2回目以降は未適用分のみ）。
 
 デフォルトでは `8080` 番ポートで起動します。  
 すでに `8080` を使用している場合は、起動に失敗することがあります。

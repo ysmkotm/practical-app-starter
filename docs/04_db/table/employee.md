@@ -1,8 +1,8 @@
 # employee 社員マスタ
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 ## 1. 基本情報
 
@@ -54,7 +54,7 @@
 |社員番号一意制約|`employee_employee_code_key`|UNIQUE|employee_code|重複不可（論理削除済み行も含む）|
 |メールアドレス一意制約|`employee_email_key`|UNIQUE|email|重複不可（論理削除済み行も含む）|
 
-- 物理制約名は、[`V005__create_employee.sql`](../../../src/main/resources/db/V005__create_employee.sql) の列定義 `UNIQUE` に対し、PostgreSQL が付与した自動命名である（DDL 上の明示名ではない）。
+- 物理制約名は、[`V005__create_employee.sql`](../../../src/main/resources/db/migration/V005__create_employee.sql) の列定義 `UNIQUE` に対し、PostgreSQL が付与した自動命名である（DDL 上の明示名ではない）。
 - アプリケーションは、登録・更新時の `DataIntegrityViolationException` 判定で上記物理制約名を使用する（`EmployeeService`）。一致する場合のみ重複エラーとして画面へ戻し、それ以外（外部キー違反・制約名不明など）は再スローする。
 - 論理削除済みの社員番号・メールアドレスは再利用できない（本制約が論理削除済み行も含むため）。
 
