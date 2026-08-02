@@ -1,10 +1,10 @@
 # 公開／非公開の配置（Public 正本＋ローカル private）
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
-**ステータス** : 決定（2026/07/26 更新。公開代表は直下 `prompts/`。`knowledge/` は廃止）
+**ステータス** : 決定（2026/07/26 更新。公開代表は直下 `prompts/`。`knowledge/` は廃止。2026/08/02：実例は `prompts/cases/`）
 
 ---
 
@@ -59,7 +59,8 @@ Version 1.0 公開にあたり、非公開の教材原資を守りつつ、（1�
 project/
 ├ src/
 ├ docs/
-├ prompts/                   ← 公開用（代表プロンプトのみ）
+├ prompts/                   ← 公開用（テンプレートは直下、実例は cases/）
+│   └ cases/
 ├ private/                   ← 開発用・非公開の正本（日常の蓄積先）
 │   ├ README.md
 │   ├ prompts/               ← 実験・下書き含む全量
@@ -79,7 +80,7 @@ project/
 ### 5.3 記録・公開の流れ
 
 1. まず `private/` に蓄積する（正本）
-2. 公開可能と判断した代表プロンプトだけ、一般化・整理して `prompts/` へコピー／昇格する
+2. 公開可能と判断した代表プロンプトだけ、一般化・整理して `prompts/` へコピー／昇格する（記事・題材向けの実例は `prompts/cases/`。方針は [`public_prompts_at_repo_root.md`](public_prompts_at_repo_root.md)）
 3. 動作確認チェックリストは `private/verification/` に置き、Version 1.0 では公開しない
 4. 初回公開時は `private/` を新 Public リポジトリへコピーしない
 5. 公開後は Public のローカルワークスペースに `private/` を置き、`.gitignore` で追跡対象外にする

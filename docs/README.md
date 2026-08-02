@@ -1,8 +1,8 @@
 # 開発ドキュメント索引
 
-**Document Version** : 1.1
+**Document Version** : 1.2
 
-**更新日** : 2026/07/31
+**更新日** : 2026/08/02
 
 ---
 
@@ -85,4 +85,4 @@
 |システムの機能一覧|[`docs/03_system/features.md`](03_system/features.md)|機能ID・概要（作業進捗は progress）|
 |画面一覧|[`docs/03_system/screens.md`](03_system/screens.md)|画面ID・URL・設計書への入口（作業進捗は progress）|
 |Version 単位の開発予定（ロードマップ）|[`docs/01_project/project.md`](01_project/project.md) §4|V1.0 / V1.x / V2.x / V3.x。公開スコープは [`version1_publish_scope.md`](07_decisions/version1_publish_scope.md)。公開・提供方針は [`public_offering_strategy.md`](07_decisions/public_offering_strategy.md)|
-|再利用プロンプト|[`prompts/`](../prompts/)|依頼文の例|
+|再利用プロンプト|[`prompts/`](../prompts/)|汎用テンプレートと、記事・題材向け実例（[`prompts/cases/`](../prompts/cases/)）|

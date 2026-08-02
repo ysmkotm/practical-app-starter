@@ -1,10 +1,10 @@
 # `prompts/` 公開棚卸しと docs リンク方針
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
-**ステータス** : 決定（BLG-PRJ-009。2026/07/26 更新：`knowledge/` 廃止・直下 `prompts/` へ）
+**ステータス** : 決定（BLG-PRJ-009。2026/07/26 更新：`knowledge/` 廃止・直下 `prompts/` へ。2026/08/02：実例は `prompts/cases/`）
 
 ---
 
@@ -47,8 +47,8 @@ Version 1.0 公開にあたり、[`public_offering_strategy.md`](public_offering
 
 |フォルダ|公開|非公開|
 |---|---|---|
-|`prompts/`（公開用・リポジトリ直下）|`README.md`、`next_task.md`、`verification_checklist_create.md`、`project_strategy_meeting.md`|—|
-|`private/prompts/`|全量（上記の正本＋`employee_code_review.md` 等）|下書き・実験は公開へ昇格しない|
+|`prompts/`（公開用・リポジトリ直下）|テンプレート（`README.md`、学習向け・作業向け各ファイル）と実例（`cases/`。例：Flyway 導入の依頼文2本）|—|
+|`private/prompts/`|全量（上記の正本＋`employee_code_review.md` 等）|下書き・実験は公開へ昇格しない。実例の公開先は `prompts/cases/`（[`public_prompts_at_repo_root.md`](public_prompts_at_repo_root.md)）|
 |`private/verification/`|全量|**公開しない**（作業正本のみ）|
 |`private/ai_logs/`|なし|フォルダ全体|
 |`private/contents/`|なし|フォルダ全体|

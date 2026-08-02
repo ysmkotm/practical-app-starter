@@ -1,6 +1,6 @@
 # DB マイグレーション基盤への Flyway 採用
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
 **更新日** : 2026/08/02
 
@@ -88,6 +88,8 @@ Version 1.x の DB マイグレーション基盤として、手動 SQL 実行�
 |[`docs/01_project/setup.md`](../01_project/setup.md)|現行の DB セットアップ手順|
 |[`docs/02_rules/db.md`](../02_rules/db.md)|SQL ファイル管理ルール|
 |[`docs/02_rules/ai.md`](../02_rules/ai.md)|AI の役割分担|
+|[`prompts/cases/cursor_flyway_migration_request.md`](../../prompts/cases/cursor_flyway_migration_request.md)|実装時に使った依頼文（公開実例）|
+|[`prompts/cases/cursor_flyway_migration_verify.md`](../../prompts/cases/cursor_flyway_migration_verify.md)|動作確認時に使った依頼文（公開実例）|
 |[Spring Boot Database Initialization](https://docs.spring.io/spring-boot/3.5/how-to/data-initialization.html)|Flyway・Liquibase の起動時実行と標準配置|
 |[Flyway Baseline On Migrate Setting](https://documentation.red-gate.com/flyway/reference/configuration/flyway-namespace/flyway-baseline-on-migrate-setting)|`baselineOnMigrate` の挙動と注意点|
 |[Liquibase rollback](https://docs.liquibase.com/oss/reference-guide-4-33/init-update-and-rollback-commands/rollback)|changelog 形式ごとの rollback 方針|
