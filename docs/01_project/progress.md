@@ -1,8 +1,8 @@
 # 進捗管理
 
-**Document Version** : 1.3
+**Document Version** : 1.4
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/02
 
 本ドキュメントは、Version 単位の **作業管理の正本（SSOT）** です。作業の全量・現在地・次にやることだけを管理します。仕様・判断理由・レビューコメント全文は記載せず、関連ドキュメントへリンクします。
 
@@ -63,12 +63,12 @@
 |項目|内容|
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
-|現在のフォーカス|Version 1.0 必須完了後。公開後の認知仕込み（BLG-PRJ-012 等）または Version 1.x／任意（PRG-EMP-010）|
+|現在のフォーカス|Version 1.0 必須完了後。Version 1.x の Flyway 導入（PRG-CMN-004）、または公開後の認知仕込み（BLG-PRJ-012 等）／任意（PRG-EMP-010）|
 |直近の完了|PRG-PRJ-003（初見ウォークスルー）（2026/07/30）|
-|次のタスク|1. 公開後の発信チャネル選定（[`BLG-PRJ-012`](backlog.md)、推奨） 2. 任意なら PRG-EMP-010（構造見直し）|
+|次のタスク|1. PRG-CMN-004（Flyway 導入。採用方針は [`flyway_adoption.md`](../07_decisions/flyway_adoption.md)） 2. 公開後の発信チャネル選定（[`BLG-PRJ-012`](backlog.md)、推奨） 3. 任意なら PRG-EMP-010（構造見直し）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ §7 / Version 2 以降|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
-|最終更新|2026/07/30|
+|最終更新|2026/08/02|
 
 ### 作業メモ
 
@@ -91,7 +91,7 @@
 - EMP002 POST：Validation Groups 採用等は [`emp002_post_validation_groups.md`](../07_decisions/emp002_post_validation_groups.md)。削除済みマスタの現在値維持は [`emp002_soft_deleted_master_reference.md`](../07_decisions/emp002_soft_deleted_master_reference.md)。
 - F-01 の `PSQLException` 依存は EMP002 最小実装として当面維持。将来の責務見直しは [`BLG-CMN-017`](backlog.md)（Version 1.x 以降）。
 - 2026/07/23：作業管理を PRG 中心に再編。REV-ID・レビュー専用章を廃止（[`progress_prg_centric_work_management.md`](../07_decisions/progress_prg_centric_work_management.md)）。
-- **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。実装はCursor（[`ai.md`](../02_rules/ai.md) §2 の役割分担どおり）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`。
+- **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。2026/08/02 に手動 SQL・Flyway・Liquibase を比較し、Flyway 採用と既存 DB の移行方針を決定（[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)）。実装はCursor（[`ai.md`](../02_rules/ai.md) §2 の役割分担どおり）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`。
 
 ---
 
@@ -105,7 +105,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-CMN-004|DBマイグレーション基盤|高（優先度引き上げ）|Flyway導入（依存追加・既存SQLのFlyway化・設定・setup.md更新）|未着手|Version 1.x技術対応（[`project.md`](project.md) §4）。実装依頼は `private/prompts/cursor_flyway_migration_request.md`（実装はCursor、[`ai.md`](../02_rules/ai.md) §2）|
+|PRG-CMN-004|DBマイグレーション基盤|高（優先度引き上げ）|Flyway導入（依存追加・既存SQLのFlyway化・設定・setup.md更新）|未着手|Version 1.x技術対応（[`project.md`](project.md) §4）。採用・移行方針は [`flyway_adoption.md`](../07_decisions/flyway_adoption.md)。実装依頼は `private/prompts/cursor_flyway_migration_request.md`（実装はCursor、[`ai.md`](../02_rules/ai.md) §2）|
 
 #### 社員管理（EMP）
 
