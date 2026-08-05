@@ -63,14 +63,12 @@
 }
 
 /* 検索・入力フォームの列間余白（入力欄右端から次項目ラベルまで） */
-.employee-form-grid,
-.department-form-grid {
+.employee-form-grid {
 	--bs-gutter-x: 1.5rem;
 	--bs-gutter-y: 0.5rem;
 }
 
-.employee-form-grid--edit,
-.department-form-grid--edit {
+.employee-form-grid--edit {
 	--bs-gutter-y: 1rem;
 }
 
