@@ -1,8 +1,8 @@
 # AI協調開発の方針
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/05
 
 ---
 
@@ -35,8 +35,8 @@ ChatGPT・Cursor・Claude 等の AI を**複数の専門役**として使い分�
 |---|---|---|
 |人間|要件・仕様の決定<br>優先順位の決定<br>設計内容の最終判断<br>AI生成物の品質確認・採用判断（§3）<br>動作確認<br>Git管理||
 |ChatGPT|開発方針・設計方針の相談<br>技術調査<br>命名提案<br>設計レビュー<br>コードレビュー|コード生成も可能だが、設計・レビュー・意思決定の支援を主な役割とする|
-|Cursor|プロジェクト全体を考慮した支援<br>作業管理・保留事項の更新支援<br>記録係（記録の提案）<br>設計書・開発ドキュメントの作成・更新<br>コードの実装・修正<br>ビルド・エラー修正の補助|入口: [`.cursor/rules/project.mdc`](../../.cursor/rules/project.mdc)<br>正本: `docs` 側<br>記録: 記録価値があれば提案（詳細は [`.cursor/rules/recording.mdc`](../../.cursor/rules/recording.mdc) および [`recording.md`](recording.md)）|
-|Claude Code|ローカルの成果物を確認しながらの相談・レビュー<br>記録係（記録の提案）|入口: [`CLAUDE.md`](../../CLAUDE.md)<br>正本: `docs` 側<br>当面: 相談・レビュー中心、実装は引き続き Cursor<br>記録: 記録価値があれば提案（詳細は [`CLAUDE.md`](../../CLAUDE.md) および [`recording.md`](recording.md)）|
+|Cursor|プロジェクト全体を考慮した実装支援<br>コードの実装・修正<br>ビルド・エラー修正の補助<br>記録は必要に応じて提案|入口: [`.cursor/rules/project.mdc`](../../.cursor/rules/project.mdc)<br>正本: `docs` 側<br>設計書・開発ドキュメントの作成・更新の主担当は 2026-08-05 より Claude Code へ変更（[`claude_code_role_expansion_documentation.md`](../07_decisions/claude_code_role_expansion_documentation.md)）。コード変更に伴うコミット準備案の提示は引き続き Cursor|
+|Claude Code|ローカルの成果物を確認しながらの相談・レビュー<br>設計書・開発ドキュメントの作成・更新（`progress.md`／`backlog.md`／画面設計書／判断記録等）<br>作業管理・保留事項の更新支援<br>記録係（記録の提案・反映）|入口: [`CLAUDE.md`](../../CLAUDE.md)<br>正本: `docs` 側<br>コードの実装・修正・ビルド確認は引き続き Cursor（2026-08-05 更新。以前は「当面：相談・レビュー中心」だったが、ドキュメント作成・更新の主担当を追加。詳細は [`claude_code_role_expansion_documentation.md`](../07_decisions/claude_code_role_expansion_documentation.md)）|
 
 ---
 
@@ -180,12 +180,12 @@ AI協調は [`docs/02_rules/development.md`](development.md) §2 で述べる **
 
 |段階|主担当|AI の使い方|
 |---|---|---|
-|対象整理・設計|人間 + ChatGPT、Cursor|方針相談（§2）。設計書の作成・更新は Cursor（§2）|
+|対象整理・設計|人間 + ChatGPT、Claude Code|方針相談（§2）。設計書の作成・更新は Claude Code（§2、2026-08-05 更新）|
 |設計レビュー|ChatGPT（L で推奨、M 以下は任意）|設計書レビュー|
 |実装|Cursor|設計書を参照した実装（§2）|
 |実装レビュー|AI + 人間|コード・ドキュメント確認。記録基準は [`development.md`](development.md) §3.1|
 |動作確認|人間|AI は補助。条件を満たす場合は **動作確認チェックリスト** を下書きし、人間が実施・判定する（[`verification_checklist_and_test_assets.md`](../07_decisions/verification_checklist_and_test_assets.md)、[`development.md`](development.md) §3.1）。本体は `private/verification/` に置く。依頼文の例：[`verification_checklist_create.md`](../../prompts/verification_checklist_create.md)|
-|区切り|人間 + Cursor（補助）|[`progress.md`](../01_project/progress.md) / [`backlog.md`](../01_project/backlog.md) / [`review_findings.md`](../01_project/review_findings.md) / [`docs/07_decisions/`](../07_decisions/) を Tier に応じて更新。ファイル変更があった場合は Cursor が [`git.md`](git.md) §7 のコミット準備案を提示し、人間が Git 操作を実行|
+|区切り|人間 + Claude Code（補助）|[`progress.md`](../01_project/progress.md) / [`backlog.md`](../01_project/backlog.md) / [`review_findings.md`](../01_project/review_findings.md) / [`docs/07_decisions/`](../07_decisions/) を Tier に応じて更新（2026-08-05 更新、以前は Cursor が補助）。ドキュメントのみの変更は Claude Code が、コード変更を伴う場合は Cursor が [`git.md`](git.md) §7 のコミット準備案を提示し、人間が Git 操作を実行|
 
 レビューで保留が見つかった場合は [`backlog.md`](../01_project/backlog.md)（②）へ、方針が確定した場合は [`07_decisions/`](../07_decisions/)（③）や開発ルールへ反映します。追跡価値のある指摘は [`review_findings.md`](../01_project/review_findings.md) に索引として残します。Git 操作の実行範囲とコミット準備案は [`docs/02_rules/git.md`](git.md) §7 を正とします。
 
