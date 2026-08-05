@@ -1,8 +1,8 @@
 # UI設計ルール
 
-**Document Version** : 1.0
+**Document Version** : 1.7
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/05
 
 ---
 
@@ -204,10 +204,16 @@ Version 1 では、一覧画面の表形式 UI に DataTables を使用します
 
 ### 4.1 入力フォームのレイアウト
 
-- 入力項目は Bootstrap の2列グリッド（`col-md-6`）を基本とします。
+- 入力項目は Bootstrap の2列グリッド（`col-md-6`）を基本とします。ただし項目数が少ない画面（目安：3〜4項目以下）では、2列グリッドが不自然な余白を生む場合があるため、1項目1行の縦並びとしてよい（[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md) 参照）。
 - 各項目はラベル左・入力右の横並びとします。ラベル幅は [`common.css`](../../src/main/resources/static/css/common.css) の `form-label-fixed`（`min-width: 7rem`）で揃えます。
 - 備考など全幅項目は `col-12` とし、他項目と同様にラベル左・入力右の横並びとします。
+- **入力欄（`input`/`select`等）1本あたりの最大幅は、項目やレイアウト（1列／2列）によらず画面横断で共通の値とします**。項目ごとの個別最適化はしません。PASはスターターキット・学習用リファレンスであり、実案件としての最適な見た目より、コード量が少なく一貫したパターンを優先するため（[`ui_review_favors_reference_clarity_over_real_world_optimal.md`](../07_decisions/ui_review_favors_reference_clarity_over_real_world_optimal.md) 参照）。
+  - **実装方法**: 個々の要素へ `style="max-width: ...px"` を都度書かず、[`common.css`](../../src/main/resources/static/css/common.css) の `:root` に CSS カスタムプロパティ `--form-input-max-width` として定義し、共通クラス `.form-control-max { max-width: var(--form-input-max-width); }` を各画面の入力欄へ付与します。**具体的な px 値は `common.css` を正とし、本ドキュメントには記載しません**（値を変えるたびに本書とのズレが生じるため）。値を変更したい場合はこのカスタムプロパティ1箇所を直せば全画面へ反映されます。
 - フォーム外枠は `card` とし、内側余白は `common.css` のフォームカード用スタイル（例：`employee-form-card`）で調整します。
+- **フォーム外枠（`card`）の最大幅は、レイアウト（1列／2列）に応じて次のシンプルな2パターンとします**（2026-08-05追加。列数から`calc()`で自動算出する案も検討したが、列数が増えるたびに式が増えて複雑化するため撤回した。PASの「コード量が少なく理解しやすいこと」という方針により忠実な、固定値ベースの方式に統一する）。
+  - **1列レイアウト**（項目数が少ない画面。例：DEP002）：`common.css`の`.form-card-narrow`で固定の`max-width`を指定する（**具体的な px 値は `common.css` を正とし、本ドキュメントには記載しない**）。画面いっぱいには広げない
+  - **2列グリッド**（項目数が多い画面。例：EMP002）：`max-width`は指定しない（Main 領域の幅いっぱいまで許容してよい）
+  - 入力欄の最大幅（`--form-input-max-width`）とcardの最大幅（`.form-card-narrow`）は連動させない（連動させようとすると列数ごとに計算式が必要になり複雑化するため）。それぞれ独立した値としてシンプルに保つ
 
 ### 4.2 操作ボタン行
 
