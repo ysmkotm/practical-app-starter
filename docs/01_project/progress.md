@@ -14,8 +14,8 @@
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
 |現在のフォーカス|**部署管理 CRUD**（[`BLG-PRJ-011`](backlog.md)：AI 協調開発フローの再現性検証）。UI 共通化（BLG-CMN-015）はスコープ外|
-|直近の完了|PRG-DEP-001（DEP001 画面設計書）・PRG-DEP-002（DEP001 検索・一覧 GET 実装、動作確認済み）（2026/08/05）|
-|次のタスク|1. `PRG-DEP-003`（DEP002 画面設計書）の人間レビュー→OKなら`PRG-DEP-004`（GET実装、Cursor）へ 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
+|直近の完了|PRG-DEP-005（DEP002 POST実装、部署コード編集可能化を含む。動作確認済み）（2026/08/05）|
+|次のタスク|1. `PRG-DEP-006`（部署管理CRUD通し動作確認） 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、インライン編集 UI 検証（BLG-CMN-021・保留）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ [`project.md`](project.md) §4 / [`backlog.md`](backlog.md)|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
 |最終更新|2026/08/05|
@@ -37,9 +37,6 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-DEP-003|DEP|Version 1.x|DEP002 部署登録・編集 — 画面設計書作成・設計レビュー|レビュー中|[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md)（EMP002を踏襲して作成済み。人間の確認待ち）、[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
-|PRG-DEP-004|DEP|Version 1.x|DEP002 部署登録・編集 — GET 実装およびレビュー|未着手|PRG-DEP-003 後|
-|PRG-DEP-005|DEP|Version 1.x|DEP002 部署登録・編集 — POST 実装（登録・更新・削除）およびレビュー|未着手|PRG-DEP-004 後|
 |PRG-DEP-006|DEP|Version 1.x|部署管理 CRUD — 通し動作確認（登録・更新・削除・バリデーション）|未着手|PRG-DEP-005 後|
 |PRG-EMP-010|EMP|任意|社員管理 CRUD — 構造・可読性・簡潔性の見直し（Controller / Service / Mapper / Form 等。必須の共通化・分割ではない）|未着手|PRG-EMP-009 完了後。Version 1.0 公開を待たない作業にしてよいが必須ではない|
 
@@ -115,6 +112,9 @@ Version 2 以降のテーマ・目指す状態は [`project.md`](project.md) §4
 
 |ID|スコープ|作業内容|完了日|関連|
 |---|---|---|---|---|
+|PRG-DEP-005|DEP|DEP002 部署登録・編集 — POST 実装（登録・更新・削除）およびレビュー。部署コード編集可能化を含む（**実装**）|2026/08/05|[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md) §10、[`BLG-EMP-007`](backlog.md)|
+|PRG-DEP-004|DEP|DEP002 部署登録・編集 — GET 実装およびレビュー（**実装**）|2026/08/05|[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md)、[`BLG-PRJ-011`](backlog.md)|
+|PRG-DEP-003|DEP|DEP002 部署登録・編集 — 画面設計書作成・設計レビュー|2026/08/05|[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md)、[`EMP002_社員登録・編集.md`](../05_screen/EMP002_社員登録・編集.md)（踏襲元）|
 |PRG-DEP-002|DEP|DEP001 部署一覧 — 検索・一覧 GET 実装およびレビュー（**実装**）|2026/08/05|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)、[`BLG-PRJ-011`](backlog.md)|
 |PRG-DEP-001|DEP|DEP001 部署一覧 — 画面設計書作成・設計レビュー|2026/08/05|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)、[`EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)（踏襲元）|
 |PRG-CMN-004|CMN|DBマイグレーション基盤 — Flyway導入（依存追加・既存SQLの標準配置移動・setup.md／db.md更新・動作確認）|2026/08/02|[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)、[`setup.md`](setup.md) §5、[`db.md`](../02_rules/db.md) §6|
@@ -133,6 +133,24 @@ Version 2 以降のテーマ・目指す状態は [`project.md`](project.md) §4
 |PRG-EMP-003|EMP|EMP001 社員一覧 — 削除 POST 実装（論理削除）|2026/07/13|取消。削除は EMP002 へ移管（[`employee_list_navigation_pattern.md`](../07_decisions/employee_list_navigation_pattern.md)）|
 |PRG-EMP-002|EMP|EMP001 社員一覧 — 検索・一覧 GET 実装およびレビュー一式|2026/07/13|commit `b3ba576` 等|
 |PRG-EMP-001|EMP|EMP001 社員一覧 — 画面設計書整備|2026/07/12|[`EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)|
+
+##### PRG-DEP-005（DEP002 POST 実装）
+
+- レビュー概要：Controller（create／update／delete）、Service（一意性チェック・DB制約違反ハンドリング）、Mapper／XML（insert／update／論理削除）を Cursor が実装。あわせて `PRG-DEP-004` 時点で readonly だった部署コードを編集可能に修正（`th:field` 化、`ValidationGroups.Update` 追加）。Claude Code のソースレビューで設計書（`DEP002_部署登録・編集.md`）との齟齬なしを確認。人間による実DB動作確認も完了
+- 修正・判断：部署コードの UNIQUE 制約違反は EMP002（F-01）と同じ `PSQLException` 物理制約名判定方式を踏襲（`department_department_code_key`）。削除確認ダイアログの部署コード・部署名は編集画面表示時点（DB値）を使用し、未保存の入力値は使わない設計を実装で維持
+- 反映：`DepartmentController`（POST 部分）、`DepartmentService`、`DepartmentMapper`／XML、`department/form.html`。部署コード編集可否の判断は [`BLG-EMP-007`](backlog.md)・本設計書 §10 参照
+
+##### PRG-DEP-004（DEP002 GET 実装）
+
+- レビュー概要：Controller（showCreate／showEdit）、DepartmentForm、form.html を Cursor が設計書通りに実装。Claude Code のソースレビューで問題なしを確認
+- 修正・判断：実装当時は部署コードを EMP002 の社員番号と同様 readonly で実装。人間の動作確認を経て「部署コードは編集可能にすべき」という指摘が出て、`DEP002_部署登録・編集.md` を改訂（§10 参照）。実際のコード修正（readonly解除、`ValidationGroups.Update` 追加）は `PRG-DEP-005` に含めて対応する
+- 反映：`DepartmentController`（GET 部分）、`DepartmentForm`、`department/form.html`
+
+##### PRG-DEP-003（DEP002 画面設計書）
+
+- レビュー概要：`EMP002_社員登録・編集.md` の構成をそのまま踏襲して作成。人間レビューで問題なしと確認
+- 修正・判断：部署コードの編集可否は当初 EMP002 と同じ読み取り専用としたが、`PRG-DEP-004` の動作確認後に編集可能へ改訂（詳細は本設計書 §10）。理由は `department_code` を外部キー参照するテーブルが無くデータ整合性上の制約が無いこと、EMP002 の社員番号は将来の自動採番を想定し編集の必要性が低いこととの対比
+- 反映：[`screens.md`](../03_system/screens.md)・[`features.md`](../03_system/features.md) へ掲載。[`BLG-EMP-007`](backlog.md) へ社員番号の編集可否を検討事項として追記
 
 ##### PRG-DEP-002（DEP001 検索・一覧 GET 実装）
 
