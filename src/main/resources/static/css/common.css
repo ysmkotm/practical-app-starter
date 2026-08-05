@@ -1,3 +1,8 @@
+/* :root の --form-input-max-width に基づいてフォームの入力欄最大幅を指定 */
+:root {
+	--form-input-max-width: 650px;
+}
+
 /* App header（Bootstrap 既定よりやや低め） */
 .app-header {
 	padding-top: 0.375rem;
@@ -47,6 +52,16 @@
 	min-width: 7rem;
 }
 
+/* 入力欄の統一最大幅（値は :root の --form-input-max-width を変更すれば全画面へ反映） */
+.form-control-max {
+	max-width: var(--form-input-max-width);
+}
+
+/* 1列レイアウト画面用のフォームカード最大幅（2列グリッド画面には付けない） */
+.form-card-narrow {
+	max-width: 800px;
+}
+
 /* 検索・入力フォームの列間余白（入力欄右端から次項目ラベルまで） */
 .employee-form-grid,
 .department-form-grid {
@@ -54,15 +69,18 @@
 	--bs-gutter-y: 0.5rem;
 }
 
-.employee-form-grid--edit {
+.employee-form-grid--edit,
+.department-form-grid--edit {
 	--bs-gutter-y: 1rem;
 }
 
-.employee-form-card {
+.employee-form-card,
+.department-form-card {
 	--bs-card-border-color: rgba(var(--bs-body-color-rgb), 0.28);
 }
 
-.employee-form-card .card-body {
+.employee-form-card .card-body,
+.department-form-card .card-body {
 	padding: 1rem 1.25rem;
 }
 

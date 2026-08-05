@@ -77,4 +77,48 @@
 		WHERE department_id = #{departmentId}
 	</select>
 
+	<select id="countByDepartmentCode" resultType="int">
+		SELECT COUNT(*)
+		FROM department
+		WHERE department_code = #{departmentCode}
+			AND deleted_flg = false
+		<if test="excludeDepartmentId != null">
+			AND department_id != #{excludeDepartmentId}
+		</if>
+	</select>
+
+	<insert id="insertDepartment" useGeneratedKeys="true" keyProperty="departmentId" keyColumn="department_id">
+		INSERT INTO department (
+			department_code,
+			department_name,
+			display_order,
+			deleted_flg
+		) VALUES (
+			#{departmentCode},
+			#{departmentName},
+			#{displayOrder},
+			false
+		)
+	</insert>
+
+	<update id="updateDepartment">
+		UPDATE department
+		SET
+			department_code = #{departmentCode},
+			department_name = #{departmentName},
+			display_order = #{displayOrder},
+			updated_at = CURRENT_TIMESTAMP
+		WHERE department_id = #{departmentId}
+			AND deleted_flg = false
+	</update>
+
+	<update id="logicalDeleteDepartment">
+		UPDATE department
+		SET
+			deleted_flg = true,
+			updated_at = CURRENT_TIMESTAMP
+		WHERE department_id = #{departmentId}
+			AND deleted_flg = false
+	</update>
+
 </mapper>

@@ -2,6 +2,8 @@ package io.github.ysmkotm.practicalappstarter.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import io.github.ysmkotm.practicalappstarter.entity.Department;
 import io.github.ysmkotm.practicalappstarter.form.DepartmentSearchForm;
 
@@ -40,4 +42,39 @@ public interface DepartmentMapper {
 	 * @return 部署。存在しない場合は {@code null}
 	 */
 	Department findDepartmentByIdIncludingDeleted(Long departmentId);
+
+	/**
+	 * 部署コードの重複件数を取得します。
+	 *
+	 * @param departmentCode 部署コード
+	 * @param excludeDepartmentId 除外する部署ID（更新時）。登録時は {@code null}
+	 * @return 未削除レコードの件数
+	 */
+	int countByDepartmentCode(
+			@Param("departmentCode") String departmentCode,
+			@Param("excludeDepartmentId") Long excludeDepartmentId);
+
+	/**
+	 * 部署を登録します。
+	 *
+	 * @param department 登録する部署
+	 * @return 登録件数
+	 */
+	int insertDepartment(Department department);
+
+	/**
+	 * 部署を更新します。
+	 *
+	 * @param department 更新する部署
+	 * @return 更新件数
+	 */
+	int updateDepartment(Department department);
+
+	/**
+	 * 部署を論理削除します。
+	 *
+	 * @param departmentId 部署ID
+	 * @return 更新件数
+	 */
+	int logicalDeleteDepartment(Long departmentId);
 }

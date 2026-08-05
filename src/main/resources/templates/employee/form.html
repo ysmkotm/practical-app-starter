@@ -39,13 +39,13 @@
 									<div class="col">
 										<!-- 編集時は th:field を使わず name を付けないため POST に含まれない（disabled ではなく送信対象外） -->
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="employeeCode"
 												th:field="*{employeeCode}"
 												th:if="${mode == 'create'}"
 												th:classappend="${#fields.hasErrors('employeeCode')} ? 'is-invalid'">
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="employeeCode"
 												th:value="*{employeeCode}"
 												readonly
@@ -59,7 +59,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="employeeName">氏名 <span class="text-danger">*</span></label>
 									<div class="col">
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="employeeName"
 												th:field="*{employeeName}"
 												th:classappend="${#fields.hasErrors('employeeName')} ? 'is-invalid'">
@@ -72,7 +72,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="employeeNameKana">氏名カナ</label>
 									<div class="col">
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="employeeNameKana"
 												th:field="*{employeeNameKana}"
 												th:classappend="${#fields.hasErrors('employeeNameKana')} ? 'is-invalid'">
@@ -85,7 +85,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="email">メールアドレス <span class="text-danger">*</span></label>
 									<div class="col">
 										<input type="email"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="email"
 												th:field="*{email}"
 												th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
@@ -98,7 +98,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="phoneNumber">電話番号</label>
 									<div class="col">
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="phoneNumber"
 												th:field="*{phoneNumber}"
 												th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid'">
@@ -110,7 +110,7 @@
 								<div class="row g-2 align-items-center">
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="departmentId">部署 <span class="text-danger">*</span></label>
 									<div class="col">
-										<select class="form-select form-select-sm"
+										<select class="form-select form-select-sm form-control-max"
 												id="departmentId"
 												th:field="*{departmentId}"
 												th:classappend="${#fields.hasErrors('departmentId')} ? 'is-invalid'">
@@ -129,7 +129,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="position">役職</label>
 									<div class="col">
 										<input type="text"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="position"
 												th:field="*{position}"
 												th:classappend="${#fields.hasErrors('position')} ? 'is-invalid'">
@@ -142,7 +142,7 @@
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="hireDate">入社日 <span class="text-danger">*</span></label>
 									<div class="col">
 										<input type="date"
-												class="form-control form-control-sm"
+												class="form-control form-control-sm form-control-max"
 												id="hireDate"
 												name="hireDate"
 												lang="ja"
@@ -156,7 +156,7 @@
 								<div class="row g-2 align-items-center">
 									<label class="col-auto col-form-label col-form-label-sm form-label-fixed" for="statusCode">在籍区分 <span class="text-danger">*</span></label>
 									<div class="col">
-										<select class="form-select form-select-sm"
+										<select class="form-select form-select-sm form-control-max"
 												id="statusCode"
 												th:field="*{statusCode}"
 												th:classappend="${#fields.hasErrors('statusCode')} ? 'is-invalid'">
