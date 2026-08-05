@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>部署一覧 | Practical App Starter</title>
+	<th:block th:replace="~{fragments/css :: css}"></th:block>
+</head>
+<body>
+	<th:block th:replace="~{fragments/header :: header}"></th:block>
+
+	<div class="d-flex">
+		<th:block th:replace="~{fragments/sidebar :: sidebar}"></th:block>
+
+		<main class="app-main">
+			<div class="department-page-header">
+				<nav aria-label="パンくずリスト"
+						th:replace="~{fragments/breadcrumb-department :: breadcrumb-department('部署一覧')}">
+				</nav>
+				<a class="btn btn-primary btn-sm" th:href="@{/department/new}">新規登録</a>
+			</div>
+			<h1 class="visually-hidden">部署一覧</h1>
+
+			<div class="alert alert-success alert-dismissible fade show py-2 mb-3" role="alert"
+					th:if="${successMessage}">
+				<span th:text="${successMessage}">処理が完了しました。</span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+			</div>
+
+			<div class="card mb-3">
+				<div class="card-body py-2 px-3">
+					<form th:action="@{/department}" th:object="${departmentSearchForm}" method="get">
+						<div class="row align-items-center department-form-grid">
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="departmentCode">部署コード</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="departmentCode"
+												th:field="*{departmentCode}"
+												th:classappend="${#fields.hasErrors('departmentCode')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('departmentCode')}" th:errors="*{departmentCode}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl col-md-6">
+								<div class="row g-2 align-items-center">
+									<label class="col-auto col-form-label col-form-label-sm" for="departmentName">部署名</label>
+									<div class="col">
+										<input type="text"
+												class="form-control form-control-sm"
+												id="departmentName"
+												th:field="*{departmentName}"
+												th:classappend="${#fields.hasErrors('departmentName')} ? 'is-invalid'">
+										<div class="invalid-feedback" th:if="${#fields.hasErrors('departmentName')}" th:errors="*{departmentName}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-auto col-md-6">
+								<div class="d-flex gap-2 justify-content-xl-end">
+									<button type="submit" class="btn btn-primary btn-sm">検索</button>
+									<a class="btn btn-outline-secondary btn-sm" th:href="@{/department}">クリア</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body py-2 px-3">
+					<table id="department-list-table" class="table table-sm table-bordered table-hover mb-0 w-100">
+						<thead class="table-light">
+							<tr>
+								<th>部署コード</th>
+								<th>部署名</th>
+								<th>表示順</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="department : ${departments}">
+								<td>
+									<a th:href="@{/department/{id}/edit(id=${department.departmentId})}"
+											th:text="${department.departmentCode}"></a>
+								</td>
+								<td th:text="${department.departmentName}"></td>
+								<td th:text="${department.displayOrder}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+	<script th:src="@{/js/department/list.js}"></script>
+</body>
+</html>

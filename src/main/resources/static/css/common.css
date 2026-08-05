@@ -17,8 +17,9 @@
 	min-width: 150px;
 }
 
-/* Employee page header (breadcrumb row) */
-.employee-page-header {
+/* List page header (breadcrumb row). department-* は EMP001 と同レイアウトのため共有 */
+.employee-page-header,
+.department-page-header {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -28,7 +29,8 @@
 	min-height: calc(1.5em + 0.5rem + 2px);
 }
 
-.employee-breadcrumb {
+.employee-breadcrumb,
+.department-breadcrumb {
 	margin-bottom: 0.5rem;
 }
 
@@ -46,7 +48,8 @@
 }
 
 /* 検索・入力フォームの列間余白（入力欄右端から次項目ラベルまで） */
-.employee-form-grid {
+.employee-form-grid,
+.department-form-grid {
 	--bs-gutter-x: 1.5rem;
 	--bs-gutter-y: 0.5rem;
 }

@@ -1,0 +1,14 @@
+<!--/*
+	部署管理用パンくず。EMP001 の breadcrumb-employee.html と同じく機能カテゴリ専用 fragment とする。
+	共通化は複数機能の実績後に検討する（DEP001 §8.6）。
+*/-->
+<nav class="department-breadcrumb" th:fragment="breadcrumb-department(currentLabel)" aria-label="パンくずリスト">
+	<ol class="breadcrumb mb-0 small">
+		<li class="breadcrumb-item"><a th:href="@{/}">TOP</a></li>
+		<li class="breadcrumb-item">部署管理</li>
+		<li class="breadcrumb-item" th:if="${currentLabel != '部署一覧'}">
+			<a th:href="@{/department}">部署一覧</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page" th:text="${currentLabel}">部署一覧</li>
+	</ol>
+</nav>
