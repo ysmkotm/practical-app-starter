@@ -12,14 +12,14 @@
 		<th:block th:replace="~{fragments/sidebar :: sidebar}"></th:block>
 
 		<main class="app-main">
-			<div class="department-page-header">
+			<div class="page-header">
 				<nav aria-label="パンくずリスト"
 						th:replace="~{fragments/breadcrumb-department :: breadcrumb-department(${mode == 'create'} ? '部署登録' : '部署編集')}">
 				</nav>
 			</div>
 			<h1 class="visually-hidden" th:text="${mode == 'create'} ? '部署登録' : '部署編集'">部署登録</h1>
 
-			<div class="card department-form-card form-card-narrow">
+			<div class="card form-card form-card-narrow">
 				<div class="card-body">
 					<form th:action="${mode == 'create'} ? @{/department} : @{/department/{id}(id=${departmentId})}"
 							th:object="${departmentForm}"

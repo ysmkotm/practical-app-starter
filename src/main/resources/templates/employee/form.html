@@ -12,14 +12,14 @@
 		<th:block th:replace="~{fragments/sidebar :: sidebar}"></th:block>
 
 		<main class="app-main">
-			<div class="employee-page-header">
+			<div class="page-header">
 				<nav aria-label="パンくずリスト"
 						th:replace="~{fragments/breadcrumb-employee :: breadcrumb-employee(${mode == 'create'} ? '社員登録' : '社員編集')}">
 				</nav>
 			</div>
 			<h1 class="visually-hidden" th:text="${mode == 'create'} ? '社員登録' : '社員編集'">社員登録</h1>
 
-			<div class="card employee-form-card">
+			<div class="card form-card">
 				<div class="card-body">
 					<form th:action="${mode == 'create'} ? @{/employee} : @{/employee/{id}(id=${employeeId})}"
 							th:object="${employeeForm}"

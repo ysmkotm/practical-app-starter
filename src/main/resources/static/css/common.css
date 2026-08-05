@@ -22,9 +22,8 @@
 	min-width: 150px;
 }
 
-/* List page header (breadcrumb row). department-* は EMP001 と同レイアウトのため共有 */
-.employee-page-header,
-.department-page-header {
+/* List / form page header (breadcrumb row) */
+.page-header {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -34,8 +33,7 @@
 	min-height: calc(1.5em + 0.5rem + 2px);
 }
 
-.employee-breadcrumb,
-.department-breadcrumb {
+.page-breadcrumb {
 	margin-bottom: 0.5rem;
 }
 
@@ -72,29 +70,27 @@
 	--bs-gutter-y: 1rem;
 }
 
-.employee-form-card,
-.department-form-card {
+.form-card {
 	--bs-card-border-color: rgba(var(--bs-body-color-rgb), 0.28);
 }
 
-.employee-form-card .card-body,
-.department-form-card .card-body {
+.form-card .card-body {
 	padding: 1rem 1.25rem;
 }
 
-.employee-form-card .form-check {
+.form-card .form-check {
 	display: flex;
 	align-items: center;
 	min-height: calc(1.5em + 0.5rem + 2px);
 	margin-bottom: 0;
 }
 
-.employee-form-card .form-check-input {
+.form-card .form-check-input {
 	margin-top: 0;
 	float: none;
 }
 
-.employee-form-card input[type="date"].form-control-sm {
+.form-card input[type="date"].form-control-sm {
 	min-height: calc(1.5em + 0.5rem + 2px);
 }
 
