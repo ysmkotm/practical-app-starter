@@ -37,7 +37,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-DEP-006|DEP|Version 1.x|部署管理 CRUD — 通し動作確認（登録・更新・削除・バリデーション）|未着手|PRG-DEP-005 後|
+|PRG-DEP-006|DEP|Version 1.x|部署管理 CRUD — 通し動作確認（登録・更新・削除・バリデーション）|動作確認中|チェックリスト作成済み：[`prg_dep_006_crud_checklist.md`](../../private/verification/prg_dep_006_crud_checklist.md)（非公開）。人間による実施待ち|
 |PRG-EMP-010|EMP|任意|社員管理 CRUD — 構造・可読性・簡潔性の見直し（Controller / Service / Mapper / Form 等。必須の共通化・分割ではない）|未着手|PRG-EMP-009 完了後。Version 1.0 公開を待たない作業にしてよいが必須ではない|
 
 ---
