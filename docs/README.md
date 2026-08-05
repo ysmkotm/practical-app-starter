@@ -1,8 +1,8 @@
 # 開発ドキュメント索引
 
-**Document Version** : 1.2
+**Document Version** : 1.4
 
-**更新日** : 2026/08/02
+**更新日** : 2026/08/05
 
 ---
 
@@ -76,7 +76,7 @@
 
 |種類|管理先|内容の例|
 |---|---|---|
-|作業管理（現在地・全量・次）|[`docs/01_project/progress.md`](01_project/progress.md)|フォーカス、PRG の状態、次タスク、完了時の短い要約、**Version 1.0 作業全量（§6）**、Version 2 以降で着手しない一覧（§7）|
+|作業管理（現在地・PRG・次）|[`docs/01_project/progress.md`](01_project/progress.md)|フォーカス、未完了 PRG、次タスク（§1〜§2）。Version 2 以降の参照先ポインタ（§3）。完了履歴・完了要約（§7）、V1.0 完了のポインタ（§8）。スコープ詳細は [`version1_publish_scope.md`](07_decisions/version1_publish_scope.md)、後回し項目は [`backlog.md`](01_project/backlog.md)、ロードマップは [`project.md`](01_project/project.md) §4|
 |今後検討する事項|[`docs/01_project/backlog.md`](01_project/backlog.md)|設計上の保留、実装前の未決定、実装中に見つかった課題（検討タイミングに Version 区分）|
 |レビュー指摘の索引|[`docs/01_project/review_findings.md`](01_project/review_findings.md)|指摘の要約、対応方針・状態、処理先への参照|
 |決定済み事項|[`docs/07_decisions/`](07_decisions/)|技術選定・設計方針の採用理由、却下した案|

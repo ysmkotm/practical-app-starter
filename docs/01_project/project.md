@@ -1,8 +1,8 @@
 # プロジェクト概要
 
-**Document Version** : 1.2
+**Document Version** : 1.3
 
-**更新日** : 2026/08/02
+**更新日** : 2026/08/05
 
 ---
 
@@ -71,7 +71,7 @@ Version 3.x（拡張・対外展開）
 |公開体裁|正式名称、ライセンス、README／setup 導線、公開前 docs 整合、初見視点ウォークスルー|
 |AI協調|現行の [`ai.md`](../02_rules/ai.md) と `prompts/` で運用できること（標準化はしない）|
 
-作業の全量・進捗は [`progress.md`](progress.md) §6 を参照してください。
+作業の現在地・進捗は [`progress.md`](progress.md) §1〜§2 を参照してください。Version 1.0 完了の案内は同 §8。
 
 Version 1.0 は GitHub 等への公開を前提とします。コードは OSS とし、開発ドキュメント（`docs`）も公開します。AI 協調の試行記録など一部資料は非公開とします。リポジトリ本体の販売や機能の有料切り出しは行いません（詳細は [`public_offering_strategy.md`](../07_decisions/public_offering_strategy.md)）。
 
@@ -130,4 +130,4 @@ Version 1.0 公開後の増分です。公開ブロッカーにはしません�
 |ドキュメント|内容|
 |---|---|
 |[`docs/01_project/setup.md`](setup.md)|開発環境構築|
-|[`docs/01_project/progress.md`](progress.md)|進捗管理（Version 1.0 作業全量を含む）|
+|[`docs/01_project/progress.md`](progress.md)|進捗管理（現在地・PRG・V1.0／V2 以降の参照ポインタ）|
