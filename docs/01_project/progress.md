@@ -15,7 +15,7 @@
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
 |現在のフォーカス|**部署管理 CRUD**（[`BLG-PRJ-011`](backlog.md)：AI 協調開発フローの再現性検証）。UI 共通化（BLG-CMN-015）はスコープ外|
 |直近の完了|BLG-PRJ-012（発信チャネル選定：Zenn + X）（2026/07/31）。PRG-CMN-004（Flyway 導入）（2026/08/02）|
-|次のタスク|1. 部署管理 CRUD（[`PRG-DEP-001`](progress.md) 〜。画面設計から着手） 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
+|次のタスク|1. `PRG-DEP-001`（DEP001 画面設計書）の人間レビュー→OKなら`PRG-DEP-002`（一覧 GET 実装、Cursor）へ 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、インライン編集 UI 検証（BLG-CMN-021・保留）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ [`project.md`](project.md) §4 / [`backlog.md`](backlog.md)|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
 |最終更新|2026/08/05|
@@ -37,7 +37,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-DEP-001|DEP|Version 1.x|DEP001 部署一覧 — 画面設計書作成・設計レビュー|未着手|[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
+|PRG-DEP-001|DEP|Version 1.x|DEP001 部署一覧 — 画面設計書作成・設計レビュー|レビュー中|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)（EMP001を踏襲して作成済み。人間の確認待ち）、[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
 |PRG-DEP-002|DEP|Version 1.x|DEP001 部署一覧 — 検索・一覧 GET 実装およびレビュー|未着手|PRG-DEP-001 後|
 |PRG-DEP-003|DEP|Version 1.x|DEP002 部署登録・編集 — 画面設計書作成・設計レビュー|未着手|[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
 |PRG-DEP-004|DEP|Version 1.x|DEP002 部署登録・編集 — GET 実装およびレビュー|未着手|PRG-DEP-003 後|

@@ -24,7 +24,7 @@
 |CMN001|TOP|その他|`/`|[`docs/05_screen/CMN001_TOP.md`](../05_screen/CMN001_TOP.md)|
 |EMP001|社員一覧|一覧|`/employee`|[`docs/05_screen/EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)|
 |EMP002|社員登録・編集|登録・編集|`/employee/new`、`/employee/{employeeId}/edit`|[`docs/05_screen/EMP002_社員登録・編集.md`](../05_screen/EMP002_社員登録・編集.md)|
-|DEP001|部署一覧|一覧|`/department`|-|
+|DEP001|部署一覧|一覧|`/department`|[`docs/05_screen/DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)|
 |DEP002|部署登録・編集|登録・編集|`/department/new`、`/department/{departmentId}/edit`|-|
 
 ---
