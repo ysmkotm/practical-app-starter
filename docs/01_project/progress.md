@@ -14,8 +14,8 @@
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
 |現在のフォーカス|**部署管理 CRUD**（[`BLG-PRJ-011`](backlog.md)：AI 協調開発フローの再現性検証）。UI 共通化（BLG-CMN-015）はスコープ外|
-|直近の完了|BLG-PRJ-012（発信チャネル選定：Zenn + X）（2026/07/31）。PRG-CMN-004（Flyway 導入）（2026/08/02）|
-|次のタスク|1. `PRG-DEP-001`（DEP001 画面設計書）の人間レビュー→OKなら`PRG-DEP-002`（一覧 GET 実装、Cursor）へ 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
+|直近の完了|PRG-DEP-001（DEP001 画面設計書）・PRG-DEP-002（DEP001 検索・一覧 GET 実装、動作確認済み）（2026/08/05）|
+|次のタスク|1. `PRG-DEP-003`（DEP002 画面設計書）の人間レビュー→OKなら`PRG-DEP-004`（GET実装、Cursor）へ 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
 |着手しない（今）|UI 本格共通化（BLG-CMN-015）、インライン編集 UI 検証（BLG-CMN-021・保留）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ [`project.md`](project.md) §4 / [`backlog.md`](backlog.md)|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
 |最終更新|2026/08/05|
@@ -37,9 +37,7 @@
 
 |ID|スコープ|優先度|作業内容|状態|関連|
 |---|---|---|---|---|---|
-|PRG-DEP-001|DEP|Version 1.x|DEP001 部署一覧 — 画面設計書作成・設計レビュー|レビュー中|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)（EMP001を踏襲して作成済み。人間の確認待ち）、[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
-|PRG-DEP-002|DEP|Version 1.x|DEP001 部署一覧 — 検索・一覧 GET 実装およびレビュー|未着手|PRG-DEP-001 後|
-|PRG-DEP-003|DEP|Version 1.x|DEP002 部署登録・編集 — 画面設計書作成・設計レビュー|未着手|[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
+|PRG-DEP-003|DEP|Version 1.x|DEP002 部署登録・編集 — 画面設計書作成・設計レビュー|レビュー中|[`DEP002_部署登録・編集.md`](../05_screen/DEP002_部署登録・編集.md)（EMP002を踏襲して作成済み。人間の確認待ち）、[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
 |PRG-DEP-004|DEP|Version 1.x|DEP002 部署登録・編集 — GET 実装およびレビュー|未着手|PRG-DEP-003 後|
 |PRG-DEP-005|DEP|Version 1.x|DEP002 部署登録・編集 — POST 実装（登録・更新・削除）およびレビュー|未着手|PRG-DEP-004 後|
 |PRG-DEP-006|DEP|Version 1.x|部署管理 CRUD — 通し動作確認（登録・更新・削除・バリデーション）|未着手|PRG-DEP-005 後|
@@ -117,6 +115,8 @@ Version 2 以降のテーマ・目指す状態は [`project.md`](project.md) §4
 
 |ID|スコープ|作業内容|完了日|関連|
 |---|---|---|---|---|
+|PRG-DEP-002|DEP|DEP001 部署一覧 — 検索・一覧 GET 実装およびレビュー（**実装**）|2026/08/05|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)、[`BLG-PRJ-011`](backlog.md)|
+|PRG-DEP-001|DEP|DEP001 部署一覧 — 画面設計書作成・設計レビュー|2026/08/05|[`DEP001_部署一覧.md`](../05_screen/DEP001_部署一覧.md)、[`EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)（踏襲元）|
 |PRG-CMN-004|CMN|DBマイグレーション基盤 — Flyway導入（依存追加・既存SQLの標準配置移動・setup.md／db.md更新・動作確認）|2026/08/02|[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)、[`setup.md`](setup.md) §5、[`db.md`](../02_rules/db.md) §6|
 |PRG-PRJ-003|PRJ|公開品質 — GitHub 初見視点の公開品質ウォークスルー（必須項目の実施・必須 NG の是正確認）（**検証**）|2026/07/30|[`public_quality_walkthrough_gate.md`](../07_decisions/public_quality_walkthrough_gate.md)。実施は `private/verification/prg_prj_003_public_walkthrough.md`（公開しない）|
 |PRG-PRJ-002|PRJ|公開準備 — README／setup 通し、正式名称・Maven／パッケージ・ライセンス反映、**公開対象の確定・新 Public 作成・開発正本の切替**（**改修**）|2026/07/30|[`public_release_new_repo_snapshot.md`](../07_decisions/public_release_new_repo_snapshot.md) §5.3、[`public_private_repo_topology.md`](../07_decisions/public_private_repo_topology.md)、[`knowledge_publish_inventory.md`](../07_decisions/knowledge_publish_inventory.md)|
@@ -133,6 +133,18 @@ Version 2 以降のテーマ・目指す状態は [`project.md`](project.md) §4
 |PRG-EMP-003|EMP|EMP001 社員一覧 — 削除 POST 実装（論理削除）|2026/07/13|取消。削除は EMP002 へ移管（[`employee_list_navigation_pattern.md`](../07_decisions/employee_list_navigation_pattern.md)）|
 |PRG-EMP-002|EMP|EMP001 社員一覧 — 検索・一覧 GET 実装およびレビュー一式|2026/07/13|commit `b3ba576` 等|
 |PRG-EMP-001|EMP|EMP001 社員一覧 — 画面設計書整備|2026/07/12|[`EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)|
+
+##### PRG-DEP-002（DEP001 検索・一覧 GET 実装）
+
+- レビュー概要：Controller／Service／Form／Mapper／XML／HTML／JS を Cursor が設計書通りに実装。Claude Code のソースレビューでエスケープ処理・並び順・DataTables 初期化・画面遷移方針のいずれも設計書との齟齬なしを確認。人間による実DB動作確認も完了
+- 修正・判断：パンくずは EMP001（`breadcrumb-employee.html`）と同様に `breadcrumb-department.html` を専用新設（実装時の軽微な判断として処理し、専用の判断記録は作成せず）
+- 反映：`DepartmentController`／`DepartmentService`／`DepartmentSearchForm`／`DepartmentMapper`（検索メソッド追加）／`department/list.html`／`department/list.js`。`BLG-PRJ-011`（AI協調開発フローの再現性検証）の途中経過として、EMP001実装時と同じ手順・粒度で初回から齟齬なく完了
+
+##### PRG-DEP-001（DEP001 画面設計書）
+
+- レビュー概要：`EMP001_社員一覧.md` の構成・画面遷移方針（操作列廃止・部署コードリンク・削除は編集画面へ移管）をそのまま踏襲して作成。Claude Code が主担当として作成し、人間レビューで問題なしと確認
+- 修正・判断：要件定義書は独立して作らず、画面設計書 §1〜§2 に要件レベルの内容を含める既存方式（EMP002 と同じ）を継続する方針を確認
+- 反映：[`screens.md`](../03_system/screens.md)・[`features.md`](../03_system/features.md) へ掲載
 
 ##### PRG-PRJ-003（公開品質ウォークスルー）
 
