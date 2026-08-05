@@ -1,8 +1,8 @@
 # 進捗管理
 
-**Document Version** : 1.5
+**Document Version** : 1.6
 
-**更新日** : 2026/08/02
+**更新日** : 2026/08/05
 
 本ドキュメントは、Version 単位の **作業管理の正本（SSOT）** です。作業の全量・現在地・次にやることだけを管理します。仕様・判断理由・レビューコメント全文は記載せず、関連ドキュメントへリンクします。
 
@@ -63,12 +63,12 @@
 |項目|内容|
 |---|---|
 |マイルストーン|Version 1.0 — 公開可能な最小完成物（[`project.md`](project.md) §4、[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。**必須作業は完了（公開可）**|
-|現在のフォーカス|Version 1.0 必須完了後。公開後の認知仕込み（BLG-PRJ-012 等）、または Version 1.x の残り（Security／Docker 等）／任意（PRG-EMP-010）|
-|直近の完了|PRG-CMN-004（Flyway 導入）（2026/08/02）|
-|次のタスク|1. 公開後の発信チャネル選定（[`BLG-PRJ-012`](backlog.md)、推奨） 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
-|着手しない（今）|UI 本格共通化（BLG-CMN-015）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ §7 / Version 2 以降|
+|現在のフォーカス|**部署管理 CRUD**（[`BLG-PRJ-011`](backlog.md)：AI 協調開発フローの再現性検証）。UI 共通化（BLG-CMN-015）はスコープ外|
+|直近の完了|BLG-PRJ-012（発信チャネル選定：Zenn + X）（2026/07/31）。PRG-CMN-004（Flyway 導入）（2026/08/02）|
+|次のタスク|1. 部署管理 CRUD（[`PRG-DEP-001`](progress.md) 〜。画面設計から着手） 2. 任意なら PRG-EMP-010（構造見直し） 3. Version 1.x の残り（Spring Security／Docker 等。[`project.md`](project.md) §4）|
+|着手しない（今）|UI 本格共通化（BLG-CMN-015）、インライン編集 UI 検証（BLG-CMN-021・保留）、AI 標準化（BLG-PRJ-006）、`docs/08_test`（BLG-PRJ-005）→ §7 / Version 2 以降|
 |着手待ち・ブロック|404 表示の最終方針は BLG-CMN-002 確定後（[`BLG-EMP-004`](backlog.md)）。成功メッセージの**共通方針完全版**は BLG-CMN-001（保留）— V1.0 暫定は PRG-CMN-003 完了|
-|最終更新|2026/08/02|
+|最終更新|2026/08/05|
 
 ### 作業メモ
 
@@ -92,6 +92,8 @@
 - F-01 の `PSQLException` 依存は EMP002 最小実装として当面維持。将来の責務見直しは [`BLG-CMN-017`](backlog.md)（Version 1.x 以降）。
 - 2026/07/23：作業管理を PRG 中心に再編。REV-ID・レビュー専用章を廃止（[`progress_prg_centric_work_management.md`](../07_decisions/progress_prg_centric_work_management.md)）。
 - **PRG-CMN-004 Flyway優先度引き上げ（2026/07/30）**：初見視点レビューで `setup.md` の手動SQL実行（6ファイル番号順）が離脱リスクとして指摘されたことを受け、`project.md` §4「Version 1.x」技術対応のうちFlywayを前倒しで着手対象に格上げ（一覧の並びも先頭へ変更）。2026/08/02 に手動 SQL・Flyway・Liquibase を比較し、Flyway 採用と既存 DB の移行方針を決定（[`flyway_adoption.md`](../07_decisions/flyway_adoption.md)）。実装・動作確認は 2026/08/02 完了（§5.2）。
+- **BLG-PRJ-012 発信チャネル選定（2026/07/31 完了）**: Zenn + X（@ysmkotm）。1本目（2026-07-31）docs 永続化、2本目（2026-08-02）Flyway ケーススタディ。KPI 起点 2026-07-31。リポジトリ内判断記録は未作成。
+- **BLG-PRJ-011 部署管理 CRUD（2026/08/05 着手）**: 対象を部署管理に確定。目的は AI 協調フローの再現性検証。UI 共通化（BLG-CMN-015）とインライン編集（BLG-CMN-021）はスコープ外。PRG-DEP-001〜006 を §5.1 に追加。
 
 ---
 
@@ -99,7 +101,20 @@
 
 ### 5.1 未完了
 
-**優先度**: 必須 = Version 1.0 公開ブロッカー／推奨 = 公開品質向上／任意 = 無くても公開可（[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）
+**優先度**: 必須 = Version 1.0 公開ブロッカー／推奨 = 公開品質向上／任意 = 無くても公開可（[`version1_publish_scope.md`](../07_decisions/version1_publish_scope.md)）。Version 1.x 以降の作業は優先度列に `Version 1.x` と記載する。
+
+#### 部署管理（DEP）
+
+[`BLG-PRJ-011`](backlog.md)（AI 協調開発フローの再現性検証）。UI 共通化・標準化（BLG-CMN-015 系）は本シリーズのスコープ外。
+
+|ID|スコープ|優先度|作業内容|状態|関連|
+|---|---|---|---|---|---|
+|PRG-DEP-001|DEP001 部署一覧|Version 1.x|画面設計書作成・設計レビュー|未着手|[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
+|PRG-DEP-002|DEP001 部署一覧|Version 1.x|検索・一覧 GET 実装およびレビュー|未着手|PRG-DEP-001 後|
+|PRG-DEP-003|DEP002 部署登録・編集|Version 1.x|画面設計書作成・設計レビュー|未着手|[`BLG-PRJ-011`](backlog.md)、[`screens.md`](../03_system/screens.md)|
+|PRG-DEP-004|DEP002 部署登録・編集|Version 1.x|GET 実装およびレビュー|未着手|PRG-DEP-003 後|
+|PRG-DEP-005|DEP002 部署登録・編集|Version 1.x|POST 実装（登録・更新・削除）およびレビュー|未着手|PRG-DEP-004 後|
+|PRG-DEP-006|部署管理 CRUD|Version 1.x|通し動作確認（登録・更新・削除・バリデーション）|未着手|PRG-DEP-005 後|
 
 #### 共通（CMN）
 
@@ -308,7 +323,7 @@
 |メッセージ・例外方針の本格整備|1.x|BLG-CMN-001 / 002|
 |DB 例外判定・論理削除マスタ補完の共通化|1.x（2 画面目以降）|BLG-CMN-017 / 018|
 |社員番号の採番・形式／削除済みコード再利用の本検討|1.x|[`BLG-EMP-007`](backlog.md)、[`BLG-EMP-013`](backlog.md)（V1.0 は当面方針の明記のみ。§6.2）|
-|AI 協調フロー再現性検証（小規模 CRUD）|1.x〜2.x|[`BLG-PRJ-011`](backlog.md)（公開条件外。BLG-PRJ-006・BLG-CMN-015 と接続）|
+|AI 協調フロー再現性検証（小規模 CRUD）|1.x〜2.x|[`BLG-PRJ-011`](backlog.md)（**着手中**：部署管理。PRG は §5.1。UI 共通化はスコープ外）|
 |正式なテスト資料（`docs/08_test`）|2.x|[`BLG-PRJ-005`](backlog.md)|
 |AI 協調開発フロー標準化・工程別標準プロンプト|2.x|[`BLG-PRJ-006`](backlog.md)|
 |共通基盤の抽出・共通テンプレート化|2.x|[`project.md`](project.md) §4|

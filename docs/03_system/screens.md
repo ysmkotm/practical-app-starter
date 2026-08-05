@@ -1,8 +1,8 @@
 # 画面一覧
 
-**Document Version** : 1.0
+**Document Version** : 1.1
 
-**更新日** : 2026/07/30
+**更新日** : 2026/08/05
 
 本ドキュメントは、システム全体の画面を俯瞰するための一覧です。
 各画面の詳細は、画面設計書を参照してください。
@@ -24,6 +24,8 @@
 |CMN001|TOP|その他|`/`|[`docs/05_screen/CMN001_TOP.md`](../05_screen/CMN001_TOP.md)|
 |EMP001|社員一覧|一覧|`/employee`|[`docs/05_screen/EMP001_社員一覧.md`](../05_screen/EMP001_社員一覧.md)|
 |EMP002|社員登録・編集|登録・編集|`/employee/new`、`/employee/{employeeId}/edit`|[`docs/05_screen/EMP002_社員登録・編集.md`](../05_screen/EMP002_社員登録・編集.md)|
+|DEP001|部署一覧|一覧|`/department`|-|
+|DEP002|部署登録・編集|登録・編集|`/department/new`、`/department/{departmentId}/edit`|-|
 
 ---
 
